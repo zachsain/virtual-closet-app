@@ -4,11 +4,20 @@ import NavBar from "./components/NavBar";
 import Login from './components/Login';
 import Logout from './components/Logout'
 import Profile from "./components/Profile";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUser } from "./redux/userSlice";
 import './App.css';
 
 function App() {
 
   const [user, setUser] = useState(null)
+  const dispatch = useDispatch();
+  
+  const userFetch = useSelector((state) => state.user.entities);
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch]);
 
   useEffect(() => {
     // auto-login
@@ -19,9 +28,9 @@ function App() {
     });
   } , []);
 
-  console.log(user)
+  console.log(userFetch)
   
-  if (!user) return (
+  if (!userFetch) return (
     <div style={{
         display:'flex',
         flexFlow: 'row wrap',
