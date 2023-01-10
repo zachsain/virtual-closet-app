@@ -1,3 +1,6 @@
 class StyleSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :url_photo, :description
+
+  has_many :pieces
+
 end
