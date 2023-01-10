@@ -12,6 +12,7 @@ function App() {
 
   const [user, setUser] = useState(null)
   const dispatch = useDispatch();
+  const [test, setTest] = useState("")
   
   const userFetch = useSelector((state) => state.user.entities);
 
@@ -28,9 +29,10 @@ function App() {
     });
   } , []);
 
-  console.log(userFetch)
+ console.log(userFetch)
   
-  if (!userFetch) return (
+
+  if (!user) return (
     <div style={{
         display:'flex',
         flexFlow: 'row wrap',
