@@ -7,6 +7,7 @@ import Profile from "./components/Profile";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUser } from "./redux/userSlice";
 import Brands from "./components/Brands";
+import Styles from "./components/Styles";
 import './App.css';
 
 function App() {
@@ -22,7 +23,6 @@ function App() {
   //   return b = a.username
   // })
 
-  let msg = {"errors" : ["Not authorized"]}
   let login;
 
   if (userFetch.errors){
@@ -46,17 +46,6 @@ function App() {
       }
     });
   } , []);
-
-//  console.log(userFetch.featured_image)
-
-//  const mapper = userFetch.map((a) => {
-//     b = a.id
-//     c = a.username
-//     d = a.email
-//  })
-
-// console.log(b)
-
    
 
   if (!user) return (
@@ -79,8 +68,8 @@ function App() {
        <Route path="/logout">
          <Logout user={user} setUser={setUser} />
        </Route>
-       <Route path="/something">
-         <h3>Maybe a search</h3>
+       <Route path="/styles">
+         <Styles />
        </Route>
        <Route path="/brands">
          <Brands />
