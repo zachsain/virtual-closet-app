@@ -6,15 +6,35 @@ import Logout from './components/Logout'
 import Profile from "./components/Profile";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUser } from "./redux/userSlice";
+import Brands from "./components/Brands";
 import './App.css';
 
 function App() {
 
   const [user, setUser] = useState(null)
+  const [loggedIn, setLoggedIn] = useState(false)
   const dispatch = useDispatch();
   const [test, setTest] = useState("")
   
   const userFetch = useSelector((state) => state.user.entities);
+
+  // let hello = userFetch.map((a) => {
+  //   return b = a.username
+  // })
+
+  let msg = {"errors" : ["Not authorized"]}
+  let login;
+
+  if (userFetch.errors){
+    console.log("no")
+    login = null
+  } else {
+    console.log("ok")
+    login = true
+   
+  }
+
+
 
   useEffect(() => {
     dispatch(fetchUser());
@@ -29,8 +49,17 @@ function App() {
     });
   } , []);
 
- console.log(userFetch)
-  
+//  console.log(userFetch.featured_image)
+
+//  const mapper = userFetch.map((a) => {
+//     b = a.id
+//     c = a.username
+//     d = a.email
+//  })
+
+// console.log(b)
+
+   
 
   if (!user) return (
     <div style={{
@@ -55,9 +84,9 @@ function App() {
        <Route path="/something">
          <h3>Maybe a search</h3>
        </Route>
-       {/* <Route path="/posts">
-         <Posts user={user} setUser={setUser} />
-       </Route> */}
+       <Route path="/brands">
+         <Brands />
+       </Route>
        <Route path="/">
           <Profile user={user} setUser={setUser}/>
        </Route>  

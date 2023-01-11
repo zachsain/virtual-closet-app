@@ -18,8 +18,8 @@ const initialState = {
 const userSlice = createSlice({
     name: "user",
     initialState: {
-      entities: [], // array of cats
-      status: "idle", // loading state
+      entities: [], 
+      status: "idle", 
     },
     reducers: {
       userAdded(state, action) {

@@ -13,7 +13,7 @@ function NavBar ({user, setUser}) {
       <Link  to="/something">Something Else</Link>
       </div>
       <div className="nav-btn">
-      <Link to="/posts">Posts</Link>
+      <Link to="/brands">Brands</Link>
       </div>
       <div className="nav-btn">
       <Link to="/logout">Logout</Link>
