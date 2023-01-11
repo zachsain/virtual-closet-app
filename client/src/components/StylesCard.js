@@ -1,8 +1,16 @@
 import React from 'react'
+import '../App.css';
 
-function StylesCard() {
+function StylesCard({name, photo, description}) {
+
   return (
-    <div>StylesCard</div>
+    <div className="style-card-container">
+        <div className="style-card">
+        <h3 className="style-name">{name}</h3>
+        <img className="style-img" src={photo} alt="brand-image" />
+        <p className="brand-description">{description}</p>
+    </div>
+</div>
   )
 }
 

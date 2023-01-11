@@ -11,6 +11,25 @@
   /* border-color: #161818; */
 }
 
+.style-card{
+  margin: 30px;
+  border: 2px solid rgb(161, 156, 156);
+  /* border-color: #161818; */
+}
+
+.style-img{
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+
 /* PROFILE PAGE */
 .brand-img {
   display: inline-block;

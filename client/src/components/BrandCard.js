@@ -4,7 +4,7 @@ import '../App.css';
 
 function BrandCard({name, headQuarters, logo, description}) {
   return (
-    <div classNam="brand-card-container">
+    <div className="brand-card-container">
         <div className="brand-card">
         <h3 className="brand-name">{name}</h3>
         <h4 className="brand-hq">{headQuarters}</h4>

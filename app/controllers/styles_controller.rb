@@ -10,10 +10,16 @@ class StylesController < ApplicationController
         render json: style
     end 
 
+    def destroy 
+        style = Style.find(params[:id])
+        style.destroy  
+        head :no_content
+    end
+
     private 
 
     def style_params 
-        params.permit(:name, :url_photo, :description)
+        params.permit(:name, :url_photo, :description, :category)
     end 
 
 

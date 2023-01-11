@@ -12,13 +12,17 @@ function Styles() {
     dispatch(fetchStyles());
   }, [dispatch]);
 
+  const styles = useSelector((state) => state.styles.entities);
+
+  console.log(styles)
 
   return (
     <div className="styles-page-container">
         <div className="styles-btn">
             <button onClick={(e) => setAddStyleBtnClick(!addStyleBtnClick)} className="btn">Add New Style</button>
         </div>
-        {addStyleBtnClick ? (<StyleForm />) : (null)}
+        {addStyleBtnClick ? (<StyleForm addStyleBtnClick={addStyleBtnClick} setAddStyleBtnClick={setAddStyleBtnClick} />) : (null)}
+        <DisplayStyles styles={styles} />
     </div>
   )
 }

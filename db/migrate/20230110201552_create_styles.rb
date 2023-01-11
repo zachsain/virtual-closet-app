@@ -4,6 +4,7 @@ class CreateStyles < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :url_photo
       t.string :description 
+      t.string :category
       t.timestamps
     end
   end
