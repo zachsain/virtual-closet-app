@@ -1,25 +1,35 @@
 import React, {useState} from 'react'
+import {brandAdded} from "../redux/brandsSlice";
+import { useSelector, useDispatch } from "react-redux";
 
-
-function BrandForm() {
+function BrandForm({showBrandForm, setShowBrandForm }) {
     const [name, setName] = useState("")
     const [headQuarters, setHeadQuarters] = useState("")
     const [logoUrl, setLogoUrl] = useState("")
     const [description, setDescription] = useState("")
-
+    const dispatch = useDispatch();
 
     function handleSubmit(e){
-        fetch("/portfolios", {
+        
+        e.preventDefault() 
+        setShowBrandForm(!showBrandForm)
+        
+        fetch("/brands", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                'name' : name,
+                'head_quarters' : headQuarters,
+                'logo_url' : logoUrl,
+                'description' :  description,
             }),
           }).then((r) => {
             if (r.ok) {
-              r.json().then((p) =>{
-                console.log(p)
+              r.json().then((b) =>{
+                dispatch(brandAdded(b))
+                
               })
             } else {
               r.json().then((err) => console.log(err.errors));

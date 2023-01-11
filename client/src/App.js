@@ -34,8 +34,6 @@ function App() {
    
   }
 
-
-
   useEffect(() => {
     dispatch(fetchUser());
   }, [dispatch]);

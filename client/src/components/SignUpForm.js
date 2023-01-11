@@ -20,7 +20,6 @@ function SignUpForm({setUser}){
             formData.append('email', email);
             formData.append('password', password);
             formData.append('featured_image', image);
-            console.log(formData)
             fetch('/signup', {
               method: 'POST',
               body: formData

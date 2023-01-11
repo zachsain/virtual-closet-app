@@ -5,14 +5,14 @@
   font-family: sans-serif;
 }
 
-.stock-card-container{
+.brand-card{
   margin: 30px;
-  border: 10px;
-  border-color: #61dafb;
+  border: 2px solid rgb(161, 156, 156);
+  /* border-color: #161818; */
 }
 
 /* PROFILE PAGE */
-.profile-photo {
+.brand-img {
   display: inline-block;
   width: 150px;
   height: 150px;

@@ -7,8 +7,14 @@ class BrandsController < ApplicationController
 
     def create 
         brand = Brand.create!(brand_params)
-        render json: stock
+        render json: brand
     end 
+    
+    def destroy 
+        brand = Brand.find(params[:id])
+        brand.destroy  
+        head :no_content
+    end
 
     private 
 
