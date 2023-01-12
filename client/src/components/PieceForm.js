@@ -5,9 +5,10 @@ import { fetchStyles } from "../redux/stylesSlice";
 import {brandAdded} from "../redux/brandsSlice";
 import BrandForm from './BrandForm';
 import StyleForm from './StyleForm';
+import {pieceAdded} from "../redux/pieceSlice";
 import { BsPlusCircle } from "react-icons/bs";
 
-function PieceForm() {
+function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
 
     const [name, setName] = useState("")
     const [price, setPrice] = useState("")
@@ -26,6 +27,9 @@ function PieceForm() {
     const dispatch = useDispatch()
     const brands = useSelector((state) => state.brands.entities);
     const styles = useSelector((state) => state.styles.entities);
+    const user = useSelector((state) => state.user.entities)
+
+    console.log(user)
 
     useEffect(() => {
         dispatch(fetchBrands());
@@ -35,16 +39,42 @@ function PieceForm() {
         dispatch(fetchStyles());
       }, [dispatch]);
 
-      function handleSubmit(e){
-        console.log(e.target)
-      }
-
       function handleBrand(e){
         setBrandId(e.target.value)
       }
 
       function handleStyle(e){
         setStyleId(e.target.value)
+      }
+
+      function handleSubmit(e){
+        e.preventDefault() 
+        setAddPieceBtnClick(!addPieceBtnClick) 
+        fetch("/pieces", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                'name' : name,
+                'price' : price,
+                'size' : size,
+                "featured_image" : image,
+                'notes' :  description,
+                'style_id' : styleId,
+                'brand_id' : brandId,
+                'user_id' : user.id
+            }),
+          }).then((r) => {
+            if (r.ok) {
+              r.json().then((p) =>{
+                dispatch(pieceAdded(p))
+              })
+            } else {
+              r.json().then((err) => console.log(err.errors));
+            }
+          });
+        
       }
 
 

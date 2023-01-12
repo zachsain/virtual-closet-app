@@ -7,7 +7,7 @@ class PiecesController < ApplicationController
 
     def create 
         piece = Piece.create!(piece_params)
-        render json: stock
+        render json: piece
     end 
 
     def update

@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import PieceForm from './PieceForm';
+import DisplayPiece from './DisplayPiece';
 
 
 function Profile(){
@@ -18,7 +19,8 @@ function Profile(){
                 <button className='btn' onClick={(e) => setAddPieceBtnClick(!addPieceBtnClick)}> 
                     Add New Piece To Closet
                 </button>
-            {addPieceBtnClick ? (<PieceForm />) : (null)}
+            {addPieceBtnClick ? (<PieceForm addPieceBtnClick={addPieceBtnClick} setAddPieceBtnClick={setAddPieceBtnClick} />) : (null)}
+            <DisplayPiece/>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchStyles = createAsyncThunk("user/fetchStyles", () => {
+export const fetchPieces = createAsyncThunk("user/fetchStyles", () => {
     // return a Promise containing the data we want
     return fetch("/pieces")
       .then((response) => response.json())
@@ -35,10 +35,10 @@ const pieceSlice = createSlice({
     //   },
     },
     extraReducers: {
-      [fetchStyles.pending](state) {
+      [fetchPieces.pending](state) {
         state.status = "loading";
       },
-      [fetchStyles.fulfilled](state, action) {
+      [fetchPieces.fulfilled](state, action) {
         state.entities = action.payload;
         state.status = "idle";
       },
