@@ -40,7 +40,7 @@ function BrandForm({showBrandForm, setShowBrandForm }) {
   return (
     <div className="brand-form-container">
         <form onSubmit={handleSubmit}>
-          <label className='portfolio-form-label'>Brand Name:</label>
+          <label className='brand-form-label'>Brand Name:</label>
           <input
             type='text'
             autoComplete="off"
@@ -49,7 +49,7 @@ function BrandForm({showBrandForm, setShowBrandForm }) {
             onChange={(e) => setName(e.target.value)}
           ></input>
           <br />
-        <label className='portfolio-form-label'>Head Quarters:</label>
+        <label className='brand-form-label'>Head Quarters:</label>
           <input
             type='text'
             placeholder="Head Quarters..."
@@ -57,7 +57,7 @@ function BrandForm({showBrandForm, setShowBrandForm }) {
             onChange={(e) => setHeadQuarters(e.target.value)}
            ></input>
           <br/>
-          <label className='portfolio-form-label'>Logo:</label>
+          <label className='brand-form-label'>Logo:</label>
           <input
             type='text'
             placeholder="Logo URL..."
@@ -65,7 +65,7 @@ function BrandForm({showBrandForm, setShowBrandForm }) {
             onChange={(e) => setLogoUrl(e.target.value)}
            ></input>
           <br/>
-          <label className='portfolio-form-label'>Brand Desciption:</label>
+          <label className='brand-form-label'>Brand Desciption:</label>
           <textarea
             type='text'
             placeholder="Description..."
