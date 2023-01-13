@@ -35,10 +35,9 @@ function PieceCard({
 
 //   let b = user.brands.find((b) => b.id === brandId)
 
-  console.log(brands)
-
   function handlePieceClick(e){
-
+        e.preventDefault()
+        history.push(`pieces/${id}`)
   }
 
 

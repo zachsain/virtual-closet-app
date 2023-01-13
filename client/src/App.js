@@ -79,7 +79,7 @@ function App() {
        <Route path="/brands">
          <Brands />
        </Route>
-       <Route path="/piece/:id">
+       <Route path="/pieces/:id">
         <DisplaySinglePiece />
        </Route>
        <Route path="/">
