@@ -33,7 +33,7 @@ const userSlice = createSlice({
         state.entities.pieces.push(action.payload)
       },
       pieceDeleted(state, action){
-        /
+        
         const index = state.entities.pieces.findIndex((p) => p.id === action.payload);
         state.entities.pieces.splice(index, 1);
         

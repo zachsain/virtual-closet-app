@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUser } from "./redux/userSlice";
 import Brands from "./components/Brands";
 import Styles from "./components/Styles";
+import { fetchBrands } from "./redux/brandsSlice";
+import DisplaySinglePiece from "./components/DisplaySinglePiece";
 import './App.css';
 
 function App() {
@@ -16,12 +18,9 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const dispatch = useDispatch();
   const [test, setTest] = useState("")
+  const [loaded, setLoaded] = useState(false)
   
   const userFetch = useSelector((state) => state.user.entities);
-
-  // let hello = userFetch.map((a) => {
-  //   return b = a.username
-  // })
 
   let login;
 
@@ -33,6 +32,12 @@ function App() {
     login = true
    
   }
+
+  useEffect(() => {
+    dispatch(fetchBrands());
+    setLoaded(true)
+  }, [dispatch]);
+
 
   useEffect(() => {
     dispatch(fetchUser());
@@ -74,8 +79,11 @@ function App() {
        <Route path="/brands">
          <Brands />
        </Route>
+       <Route path="/piece/:id">
+        <DisplaySinglePiece />
+       </Route>
        <Route path="/">
-          <Profile user={user} setUser={setUser}/>
+          <Profile loaded={loaded}/>
        </Route>  
      </Switch>
    </div>

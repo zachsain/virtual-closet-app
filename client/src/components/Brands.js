@@ -5,7 +5,7 @@ import { fetchBrands } from "../redux/brandsSlice";
 import DisplayBrands from './DisplayBrands'
 
 
-function Brands() {
+function Brands({}) {
 
     const [showBrandForm, setShowBrandForm] = useState(false)
     const dispatch = useDispatch();
@@ -21,7 +21,6 @@ function Brands() {
     
 
     const brands = useSelector((state) => state.brands.entities);
-
     console.log(brands)
 
 

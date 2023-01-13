@@ -103,16 +103,7 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
   return (
     <div className="piece-form-container">
         <form onSubmit={handleSubmit}>
-          <label className='portfolio-form-label'>Name:</label>
-          <input
-            type='text'
-            autoComplete="off"
-            placeholder="Sweater..."
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
-          <br/>
-          <label className='category-form'>Brand:
+        <label className='category-form'>Brand:
                 <select onChange={handleBrand}className="selector">
                     <option></option>
                     {brands.map((b) => {
@@ -125,10 +116,19 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
             <BsPlusCircle/> 
         </button>
           <br />
-          <label> Upload Phtoto:
-            <input type="file" accept="image/*" multiple={false} onChange={onImageChange} />
-          </label>
+          <label className='portfolio-form-label'>Name:</label>
+          <input
+            type='text'
+            autoComplete="off"
+            placeholder="Sweater..."
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></input>
           <br/>
+          {/* <label> Upload Phtoto:
+            <input type="file" accept="image/*" multiple={false} onChange={onImageChange} />
+          </label> */}
+          {/* <br/> */}
           <label className='portfolio-form-label'>Image:</label>
           <input
             type='text'

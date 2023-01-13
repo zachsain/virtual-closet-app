@@ -4,7 +4,7 @@ import PieceForm from './PieceForm';
 import DisplayPiece from './DisplayPiece';
 
 
-function Profile(){
+function Profile({loaded}){
 
     const [addPieceBtnClick, setAddPieceBtnClick] = useState(false)
 
@@ -16,7 +16,7 @@ function Profile(){
                     Add New Piece To Closet
                 </button>
             {addPieceBtnClick ? (<PieceForm addPieceBtnClick={addPieceBtnClick} setAddPieceBtnClick={setAddPieceBtnClick} />) : (null)}
-            <DisplayPiece/>
+            <DisplayPiece loaded={loaded}/>
             </div>
         </div>
     )
