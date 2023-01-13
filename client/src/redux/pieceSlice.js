@@ -25,10 +25,11 @@ const pieceSlice = createSlice({
       pieceAdded(state, action) {
         state.entities.push(action.payload);
       },
-    //   pieceUpdated(state, action) {
-    //     const piece = state.entities.find((u) => piece.id === action.payload.id);
-    //     user.url = action.payload.url;
-    //   },
+      pieceUpdated(state, action) {
+        const piece = state.entities.find((piece) => piece.id === action.payload.id);
+        console.log(piece)
+        // piece = action.payload;
+      },
     //   pieceDeleted(state, action) {
     //     const piece = state.entities.filter((p) => p.id !== action.payload);
     //   },
@@ -44,7 +45,7 @@ const pieceSlice = createSlice({
     },
 });
   
-export const { pieceAdded  } = pieceSlice.actions;
+export const { pieceAdded, pieceUpdated  } = pieceSlice.actions;
 
   
 export default pieceSlice.reducer;
