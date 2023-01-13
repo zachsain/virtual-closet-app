@@ -26,17 +26,20 @@ const userSlice = createSlice({
         state.entities.push(action.payload);
       },
       userUpdated(state, action) {
-        const user = state.entities.find((u) => user.id === action.payload.id);
+        const user = state.entities.find((u) => u.id === action.payload.id);
         user.url = action.payload.url;
+      },
+      pieceUpdated(state, action){
+        // console.log(action.payload.id)
+        const index = state.entities.pieces.findIndex((p) => p.id === action.payload.id);
+        state.entities.pieces.splice(index, 1, action.payload); 
       },
       pieceAdded(state, action){
         state.entities.pieces.push(action.payload)
       },
       pieceDeleted(state, action){
-        
         const index = state.entities.pieces.findIndex((p) => p.id === action.payload);
-        state.entities.pieces.splice(index, 1);
-        
+        state.entities.pieces.splice(index, 1);   
       }
     },
     extraReducers: {
@@ -50,7 +53,7 @@ const userSlice = createSlice({
     },
 });
   
-export const { userAdded, pieceAdded, pieceDeleted, userUpdated } = userSlice.actions;
+export const { userAdded, pieceUpdated, pieceAdded, pieceDeleted, userUpdated } = userSlice.actions;
 
   
 export default userSlice.reducer;

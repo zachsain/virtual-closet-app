@@ -6,12 +6,13 @@ import {brandAdded} from "../redux/brandsSlice";
 import BrandForm from './BrandForm';
 import StyleForm from './StyleForm';
 // import {pieceAdded} from "../redux/pieceSlice";
-import {pieceAdded} from "../redux/userSlice";
+import {pieceUpdated} from "../redux/userSlice";
 import { BsPlusCircle } from "react-icons/bs";
 import {pieceDeleted} from "../redux/pieceSlice";
 
 
 function PieceEditForm({
+            id, 
             styleId, 
             brandId,
              userId,
@@ -63,7 +64,7 @@ function PieceEditForm({
 
       function handleSubmit(e){
         e.preventDefault() 
-        fetch("/pieces", {
+        fetch(`/pieces/${id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -82,8 +83,8 @@ function PieceEditForm({
           }).then((r) => {
             if (r.ok) {
               r.json().then((p) =>{
-                console.log(p)
-                // dispatch(pieceAdded(p))
+                console.log(p)  
+                dispatch(pieceUpdated(p))
               })
             } else {
               r.json().then((err) => console.log(err.errors));
@@ -174,7 +175,7 @@ function PieceEditForm({
         <br/>
         <div className="add-piece-btn">
           <button className="btn" type='submit'>Add Piece</button>
-          </div>
+        </div>
 
         </form>
 

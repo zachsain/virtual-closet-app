@@ -61,6 +61,7 @@ function DisplaySinglePiece() {
             pieceDescription={piece.notes}
             piecePrice={piece.price}
             pieceSize={piece.size}
+            id={piece.id}
 
             />) : (null)}
 
