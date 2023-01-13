@@ -8,6 +8,7 @@ class CreatePieces < ActiveRecord::Migration[6.1]
       t.string :price
       t.string :notes
       t.string :size
+      t.string :image_url
       t.timestamps
     end
   end

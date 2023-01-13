@@ -10,6 +10,9 @@ console.log(user)
 
 let closet = user.pieces.map((p) => {
     return <PieceCard 
+                key={p.id}
+                imageUrl={p.image_url}
+                id={p.id}
                 name={p.name}
                 price={p.price}
                 size={p.size}

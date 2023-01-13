@@ -30,8 +30,7 @@ const pieceSlice = createSlice({
     //     user.url = action.payload.url;
     //   },
     //   pieceDeleted(state, action) {
-    //     const piece = state.entities.filter((p) => piece.id !== action.payload.id);
-    //     user.url = action.payload.url;
+    //     const piece = state.entities.filter((p) => p.id !== action.payload);
     //   },
     },
     extraReducers: {

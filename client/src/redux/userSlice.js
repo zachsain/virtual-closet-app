@@ -29,6 +29,15 @@ const userSlice = createSlice({
         const user = state.entities.find((u) => user.id === action.payload.id);
         user.url = action.payload.url;
       },
+      pieceAdded(state, action){
+        state.entities.pieces.push(action.payload)
+      },
+      pieceDeleted(state, action){
+        /
+        const index = state.entities.pieces.findIndex((p) => p.id === action.payload);
+        state.entities.pieces.splice(index, 1);
+        
+      }
     },
     extraReducers: {
       [fetchUser.pending](state) {
@@ -41,7 +50,7 @@ const userSlice = createSlice({
     },
 });
   
-export const { userAdded, userUpdated } = userSlice.actions;
+export const { userAdded, pieceAdded, pieceDeleted, userUpdated } = userSlice.actions;
 
   
 export default userSlice.reducer;

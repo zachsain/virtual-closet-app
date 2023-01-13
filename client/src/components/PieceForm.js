@@ -5,7 +5,8 @@ import { fetchStyles } from "../redux/stylesSlice";
 import {brandAdded} from "../redux/brandsSlice";
 import BrandForm from './BrandForm';
 import StyleForm from './StyleForm';
-import {pieceAdded} from "../redux/pieceSlice";
+// import {pieceAdded} from "../redux/pieceSlice";
+import {pieceAdded} from "../redux/userSlice";
 import { BsPlusCircle } from "react-icons/bs";
 
 function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
@@ -15,6 +16,7 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
     const [description, setDescription] = useState("")
     const [size, setSize] = useState("")
     const [image, setImage] = useState(null)
+    const [imageUrl, setImageUrl] = useState("")
     const [showBrandForm, setShowBrandForm] = useState(false)
     const [brandName, setBrandName] = useState("")
     const [headQuarters, setHeadQuarters] = useState("")
@@ -47,9 +49,29 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
         setStyleId(e.target.value)
       }
 
+      function onImageChange(e){
+        console.log(e.target.files[0])
+        setImage(e.target.files[0])
+      }
+
+      console.log(image)
+
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('price', price);
+      formData.append('size', size);
+      formData.append('featured_image', image);
+      formData.append('notes', description);
+      formData.append('user_id', user.id);
+      formData.append('brand_id', brandId);
+      formData.append('style_id', styleId);
+
+      console.log(formData)
+
       function handleSubmit(e){
         e.preventDefault() 
         setAddPieceBtnClick(!addPieceBtnClick) 
+               
         fetch("/pieces", {
             method: "POST",
             headers: {
@@ -59,7 +81,8 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
                 'name' : name,
                 'price' : price,
                 'size' : size,
-                "featured_image" : image,
+                'featured_image': image,
+                'image_url' : imageUrl,
                 'notes' :  description,
                 'style_id' : styleId,
                 'brand_id' : brandId,
@@ -77,7 +100,6 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
         
       }
 
-
   return (
     <div className="piece-form-container">
         <form onSubmit={handleSubmit}>
@@ -92,6 +114,7 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
           <br/>
           <label className='category-form'>Brand:
                 <select onChange={handleBrand}className="selector">
+                    <option></option>
                     {brands.map((b) => {
                         return <option key={b.id} value={b.id}>{b.name}</option>
                      
@@ -103,9 +126,18 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
         </button>
           <br />
           <label> Upload Phtoto:
-            <input type="file" accept="image/*" multiple={false} onChange={(e) => setImage(e.target.files[0])} />
+            <input type="file" accept="image/*" multiple={false} onChange={onImageChange} />
           </label>
           <br/>
+          <label className='portfolio-form-label'>Image:</label>
+          <input
+            type='text'
+            autoComplete="off"
+            placeholder="URL..."
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          ></input>
+          <br />
           <label className='portfolio-form-label'>Price:</label>
           <input
             type='text'
@@ -136,6 +168,7 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
           <br/> 
           <label className='category-form'>Style:
                 <select onChange={handleStyle}className="selector">
+                    <option></option>
                     {styles.map((s) => {
                         return <option key={s.id} value={s.id}>{s.name}</option>
                      

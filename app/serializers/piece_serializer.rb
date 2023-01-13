@@ -1,6 +1,6 @@
 class PieceSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :featured_image, :user_id, :brand_id, :style_id, :name, :price, :notes, :size
+  attributes :id,  :featured_image, :user_id, :brand_id, :style_id, :name, :price, :notes, :size, :image_url
 
   belongs_to :user
   belongs_to :brand 

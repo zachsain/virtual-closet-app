@@ -24,6 +24,6 @@ class PiecesController < ApplicationController
     private 
 
     def piece_params 
-        params.permit(:user_id, :brand_id, :style_id, :name, :price, :notes, :size)
+        params.permit(:user_id, :brand_id, :style_id, :name, :price, :notes, :size, :featured_image, :image_url)
     end 
 end
