@@ -6,6 +6,7 @@ function DisplayStyles({styles}) {
    let styleCard = styles.map((s) => {
     return <StylesCard 
             key={s.id}
+            id={s.id}
             name={s.name}
             photo={s.url_photo}
             description={s.description}
