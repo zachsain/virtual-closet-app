@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import PieceCard from './PieceCard';
 import '../App.css';
 
-function StylesCard({name, photo, description, id, styles, showPieceClick }) {
+function StylesCard({name, photo, description, id, styles, showPieceClick, showPieces, setShowPieces}) {
    const history = useHistory()
    const user = useSelector((state) => state.user.entities)
-   const [showPieces, setShowPieces] = useState(false)
+//    const [showPieces, setShowPieces] = useState(false)
 
    const pieces = user.pieces.filter((s) => s.style_id === id)
 //    console.log(pieces)
@@ -26,6 +26,8 @@ function StylesCard({name, photo, description, id, styles, showPieceClick }) {
                 image={p.featured_image}
                 id={p.id}
                 imageUrl={p.image_url}
+                showPieces={showPieces}
+                setShowPieces={setShowPieces}
             />
    })  
 

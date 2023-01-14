@@ -16,11 +16,13 @@ function DisplaySinglePiece() {
     const [editClick, setEditClick] = useState(false)
     const user = useSelector((state) => state.user.entities);
     const brands = useSelector((state) => state.brands.entities)
+    const styles = useSelector((state) => state.styles.entities)
 
     let piece = user.pieces.find(p => p.id == params.id)
-    // let brand = user.brands.find(b => b.id == piece.brand_id)
     let filterBrand = brands.find(b => b.id == piece.brand_id)
+    let filteredStyle = styles.find(s => s.id == piece.style_id ) 
     let style = user.styles.find(s => s.id == piece.style_id)
+
     console.log(user)
     console.log(filterBrand)
     // console.log(style.name)
@@ -57,14 +59,16 @@ function DisplaySinglePiece() {
             <FiEdit size="1.7em" id="edit-btn-icon"/>
         </button>
         {editClick ? (<PieceEditForm
-            styleId={style.id}
-            // brandId={brand.id} 
+            styleId={filteredStyle.id}
+            brandId={filterBrand.id} 
             userId ={user.id}
             pieceName={piece.name}
             pieceDescription={piece.notes}
             piecePrice={piece.price}
             pieceSize={piece.size}
             id={piece.id}
+            setEditClick={setEditClick}
+            editClick={editClick}
 
             />) : (null)}
 
@@ -79,15 +83,15 @@ function DisplaySinglePiece() {
                 />
     </div>
    
-    {/* <div>
+    <div>
         <h5>Style: </h5>
         <StylesCard 
-            name={style.name}
-            photo={style.url_photo}
-            description={style.description}
+            name={filteredStyle.name}
+            photo={filteredStyle.url_photo}
+            description={filteredStyle.description}
             />
 
-    </div> */}
+    </div> 
 </div>
   )
 }

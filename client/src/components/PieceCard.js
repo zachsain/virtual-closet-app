@@ -26,15 +26,8 @@ function PieceCard({
   const user = useSelector((state) => state.user.entities)
   const [brandLoaded, setBrandLoaded] = useState(false)
   const history = useHistory()
-//   const brands = useSelector((state) => state.brands.entities);
-//   const brands = useSelector((state) => state.brands.entities);
-
 
   const dispatch = useDispatch()
-
-//   let brand = brands.find((b) => b.id === brandId)
-
-//   let b = user.brands.find((b) => b.id === brandId)
 
   function handlePieceClick(){
         history.push(`pieces/${id}`)
@@ -63,6 +56,7 @@ function PieceCard({
              <h3 className="piece-name">{name}</h3>
              <img className="piece-img" src={imageUrl} alt="piece-image" />
              <h4>Price: {price} </h4>
+             <h5>{size}</h5>
              <p className="piece-description">{description}</p>
             {/* {loaded ? (<div><h4>Brand: {brand.name}</h4></div>) : (null)} */}
             </div>

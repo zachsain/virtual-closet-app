@@ -1,10 +1,12 @@
 import React from 'react'
 import BrandCard from './BrandCard'
 
-function DisplayBrands({brands, showPieceClick}) {
+function DisplayBrands({brands, showPieceClick, setShowPieces, showPieces}) {
 
     let brandCard = brands.map((b) => {
      return   <BrandCard
+                setShowPieces={setShowPieces} 
+                showPieces={showPieces} 
                 id={b.id}
                 key={b.id}
                 name={b.name}

@@ -19,7 +19,10 @@ function PieceEditForm({
             pieceName,
             pieceDescription,
             piecePrice,
-            pieceSize}) {
+            pieceSize,
+            setEditClick,
+            editClick
+            }) {
 
     const [name, setName] = useState("")
     const [price, setPrice] = useState("")
@@ -64,6 +67,7 @@ function PieceEditForm({
 
       function handleSubmit(e){
         e.preventDefault() 
+        setEditClick(!editClick)
         fetch(`/pieces/${id}`, {
             method: "PATCH",
             headers: {

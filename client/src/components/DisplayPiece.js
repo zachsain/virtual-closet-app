@@ -11,10 +11,6 @@ const brands = useSelector((state) => state.brands.entities);
 const [displayDelete, setDisplayDelete] = useState(true)
 const dispatch = useDispatch()
 
-
-
-
-
 let closet = user.pieces.map((p) => {
     return <PieceCard 
                 key={p.id}

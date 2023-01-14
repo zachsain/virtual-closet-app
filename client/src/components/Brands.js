@@ -10,6 +10,7 @@ function Brands({}) {
     const [showBrandForm, setShowBrandForm] = useState(false)
     const [myBrandBtnClick, setMyBrandBtnClick] = useState(false)
     const [showPieceClick, setShowPieceClick] = useState(false)
+    const [showPieces, setShowPieces] = useState(false)
     const dispatch = useDispatch();
 
     function handleBrandClick(e){
@@ -27,6 +28,7 @@ function Brands({}) {
     console.log(brands)
 
     function handleMyBrandClick(){
+        setShowPieces(false)
         setShowPieceClick(!showPieceClick)
         setMyBrandBtnClick(!myBrandBtnClick)
       }
@@ -43,9 +45,9 @@ function Brands({}) {
             (<BrandForm showBrandForm={showBrandForm} setShowBrandForm={setShowBrandForm}/>) 
             : (null)}
         {myBrandBtnClick ? 
-            ( <DisplayBrands brands={myBrands.brands} showPieceClick={showPieceClick}/>) 
+            ( <DisplayBrands setShowPieces={setShowPieces} showPieces={showPieces} brands={myBrands.brands} showPieceClick={showPieceClick}/>) 
             : 
-            ( <DisplayBrands brands={brands} showPieceClick={showPieceClick}/>)}
+            ( <DisplayBrands  brands={brands} showPieceClick={showPieceClick}/>)}
         {/* <div>
             <DisplayBrands brands={brands}/>
         </div> */}

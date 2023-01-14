@@ -9,9 +9,12 @@ function BrandCard({
     logo, 
     description, 
     id, 
-    showPieceClick}) {
+    showPieceClick,
+    showPieces,
+    setShowPieces
+    }) {
    
-    const [showPieces, setShowPieces] = useState(false)
+    // const [showPieces, setShowPieces] = useState(false)
 
     const user = useSelector((state) => state.user.entities)
 
