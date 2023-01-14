@@ -1,15 +1,17 @@
 import React from 'react'
 import BrandCard from './BrandCard'
 
-function DisplayBrands({brands}) {
+function DisplayBrands({brands, showPieceClick}) {
 
     let brandCard = brands.map((b) => {
-     return   <BrandCard 
+     return   <BrandCard
+                id={b.id}
                 key={b.id}
                 name={b.name}
                 headQuarters={b.head_quarters}
                 logo={b.logo_url}
                 description={b.description}
+                showPieceClick={showPieceClick}
             />
     })
 

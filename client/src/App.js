@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Login from './components/Login';
 import Logout from './components/Logout'
@@ -21,7 +21,6 @@ function App() {
   const dispatch = useDispatch();
   const [test, setTest] = useState("")
   const [loaded, setLoaded] = useState(false)
-  
   const userFetch = useSelector((state) => state.user.entities);
 
   let login;
@@ -88,7 +87,7 @@ function App() {
        <Route exact path="/pieces/:id">
         <DisplaySinglePiece />
        </Route>
-       <Route  path="/styles/:id">
+       <Route  exact path="/styles/:id">
         <DisplaySingleStyle />
        </Route>
        <Route exact path="/">
