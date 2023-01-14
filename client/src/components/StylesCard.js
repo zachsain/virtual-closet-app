@@ -5,16 +5,16 @@ import '../App.css';
 function StylesCard({name, photo, description, id}) {
    const history = useHistory()
    
-    function handleStyleClick(e){
+    function handleStyleClick(){
         history.push(`/styles/${id}`)
     }
 
   return (
     <div onClick={handleStyleClick} className="style-card-container">
-        <div > 
+        <div> 
             <div className="style-card">
             <h3 className="style-name">{name}</h3>
-            <img className="style-img" src={photo} alt="brand-image" />
+            <img className="style-img" src={photo} alt="style-image" />
             <p className="brand-description">{description}</p>
         </div>
     </div>

@@ -19,7 +19,8 @@ function PieceCard({
     id,
     imageUrl,
     loaded,
-    brands
+    brands,
+    displayDelete
 }) {
     
   const user = useSelector((state) => state.user.entities)
@@ -31,12 +32,11 @@ function PieceCard({
 
   const dispatch = useDispatch()
 
-  let brand = brands.find((b) => b.id === brandId)
+//   let brand = brands.find((b) => b.id === brandId)
 
 //   let b = user.brands.find((b) => b.id === brandId)
 
-  function handlePieceClick(e){
-        e.preventDefault()
+  function handlePieceClick(){
         history.push(`pieces/${id}`)
   }
 
@@ -66,9 +66,13 @@ function PieceCard({
              <p className="piece-description">{description}</p>
             {/* {loaded ? (<div><h4>Brand: {brand.name}</h4></div>) : (null)} */}
             </div>
-            <button onClick={handleDelete}>
+
+            {displayDelete ? ( <button onClick={handleDelete}>
             <FaTimesCircle />
-            </button>
+            </button>) : (null)}
+            {/* <button onClick={handleDelete}>
+            <FaTimesCircle />
+            </button> */}
         </div>
     </div>
   )

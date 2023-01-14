@@ -8,6 +8,7 @@ function DisplayPiece({loaded}) {
 const user = useSelector((state) => state.user.entities)
 const [brandLoaded, setBrandLoaded] = useState(false)
 const brands = useSelector((state) => state.brands.entities);
+const [displayDelete, setDisplayDelete] = useState(true)
 const dispatch = useDispatch()
 
 
@@ -29,6 +30,7 @@ let closet = user.pieces.map((p) => {
                 brands={brands}
                 loaded={loaded}
                 brandLoaded={brandLoaded}
+                displayDelete={displayDelete}
             />
 })
   return (

@@ -11,6 +11,7 @@ import Styles from "./components/Styles";
 import { fetchBrands } from "./redux/brandsSlice";
 import DisplaySinglePiece from "./components/DisplaySinglePiece";
 import DisplaySingleStyle from "./components/DisplaySingleStyle";
+import { fetchStyles } from "./redux/stylesSlice";
 import './App.css';
 
 function App() {
@@ -45,6 +46,10 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
+    dispatch(fetchStyles());
+  }, [dispatch]);
+
+  useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
@@ -71,22 +76,22 @@ function App() {
     <div className="App">
     <NavBar user={user} setUser={setUser} />
      <Switch>
-       <Route path="/logout">
+       <Route exact path="/logout">
          <Logout user={user} setUser={setUser} />
        </Route>
-       <Route path="/styles">
+       <Route exact path="/styles">
          <Styles />
        </Route>
-       <Route path="/brands">
+       <Route exact path="/brands">
          <Brands />
        </Route>
-       <Route path="/pieces/:id">
+       <Route exact path="/pieces/:id">
         <DisplaySinglePiece />
        </Route>
-       <Route path="/styles/:id">
+       <Route  path="/styles/:id">
         <DisplaySingleStyle />
        </Route>
-       <Route path="/">
+       <Route exact path="/">
           <Profile loaded={loaded}/>
        </Route>  
      </Switch>

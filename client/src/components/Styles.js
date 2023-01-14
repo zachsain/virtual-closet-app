@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import DisplayStyles from './DisplayStyles'
 import StyleForm from './StyleForm';
 import { useSelector, useDispatch } from "react-redux";
@@ -8,13 +8,7 @@ function Styles() {
   const [addStyleBtnClick, setAddStyleBtnClick] = useState(false)
   const dispatch = useDispatch()
  
-  useEffect(() => {
-    dispatch(fetchStyles());
-  }, [dispatch]);
-
   const styles = useSelector((state) => state.styles.entities);
-
-  console.log(styles)
 
   return (
     <div className="styles-page-container">
