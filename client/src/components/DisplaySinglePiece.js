@@ -12,16 +12,19 @@ import PieceEditForm from './PieceEditForm';
 function DisplaySinglePiece() {
     const params = useParams();
     const history = useHistory()
-    const user = useSelector((state) => state.user.entities);
     const dispatch = useDispatch()
     const [editClick, setEditClick] = useState(false)
+    const user = useSelector((state) => state.user.entities);
+    const brands = useSelector((state) => state.brands.entities)
 
     let piece = user.pieces.find(p => p.id == params.id)
-    let brand = user.brands.find(b => b.id == piece.brand_id)
+    // let brand = user.brands.find(b => b.id == piece.brand_id)
+    let filterBrand = brands.find(b => b.id == piece.brand_id)
     let style = user.styles.find(s => s.id == piece.style_id)
-
-    console.log(brand.name)
-    console.log(style.name)
+    console.log(user)
+    console.log(filterBrand)
+    // console.log(style.name)
+    // console.log(filterBrand)
 
     function handleDelete(e){ 
         console.log(params.id)
@@ -55,7 +58,7 @@ function DisplaySinglePiece() {
         </button>
         {editClick ? (<PieceEditForm
             styleId={style.id}
-            brandId={brand.id} 
+            // brandId={brand.id} 
             userId ={user.id}
             pieceName={piece.name}
             pieceDescription={piece.notes}
@@ -69,14 +72,14 @@ function DisplaySinglePiece() {
     <div>
         <h5>Made By:</h5>
         <BrandCard 
-            name={brand.name}
-            headQuarters={brand.head_quarters}
-            logo={brand.logo_url}
-            description={brand.description}
+            name={filterBrand.name}
+            headQuarters={filterBrand.head_quarters}
+            logo={filterBrand.logo_url}
+            description={filterBrand.description}
                 />
     </div>
    
-    <div>
+    {/* <div>
         <h5>Style: </h5>
         <StylesCard 
             name={style.name}
@@ -84,7 +87,7 @@ function DisplaySinglePiece() {
             description={style.description}
             />
 
-    </div>
+    </div> */}
 </div>
   )
 }

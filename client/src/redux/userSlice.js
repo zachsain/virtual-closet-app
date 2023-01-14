@@ -37,6 +37,12 @@ const userSlice = createSlice({
       pieceAdded(state, action){
         state.entities.pieces.push(action.payload)
       },
+      renderBrand(state, action){
+        state.entities.brands.push(action.payload)
+      },
+      // renderBrand(state, action){
+      //   state.entities.syles.push(action.payload)
+      // },
       pieceDeleted(state, action){
         const index = state.entities.pieces.findIndex((p) => p.id === action.payload);
         state.entities.pieces.splice(index, 1);   
@@ -53,7 +59,7 @@ const userSlice = createSlice({
     },
 });
   
-export const { userAdded, pieceUpdated, pieceAdded, pieceDeleted, userUpdated } = userSlice.actions;
+export const { userAdded, pieceUpdated, pieceAdded, pieceDeleted, userUpdated, renderBrand} = userSlice.actions;
 
   
 export default userSlice.reducer;

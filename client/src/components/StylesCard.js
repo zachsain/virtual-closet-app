@@ -10,20 +10,9 @@ function StylesCard({name, photo, description, id, styles, showPieceClick }) {
    const [showPieces, setShowPieces] = useState(false)
 
    const pieces = user.pieces.filter((s) => s.style_id === id)
-   console.log(pieces)
-   console.log(styles)
+//    console.log(pieces)
+//    console.log(styles)
 
-   let pieceExist; 
-
-//    const styleFilter = styles.filter((s) => s.id === pieces.id )
-
-   // if in all of our styles an id !=== a piece.style_id
-
-//    if (styles.pieces.id !== pieces.id) {
-//     pieceExist = true
-//    } else {
-//     pieceExist = false
-//    }
 
 
 

@@ -7,6 +7,7 @@ import BrandForm from './BrandForm';
 import StyleForm from './StyleForm';
 // import {pieceAdded} from "../redux/pieceSlice";
 import {pieceAdded} from "../redux/userSlice";
+import {renderBrand} from "../redux/userSlice";
 import { BsPlusCircle } from "react-icons/bs";
 
 function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
@@ -26,23 +27,18 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
     const [brandId, setBrandId] = useState(0)
     const [styleClick, setStyleClick] = useState(false)
     const [brandClick, setBrandClick] = useState(false)
+    const [addBrand, setAddBrand] = useState([])
     const dispatch = useDispatch()
     const brands = useSelector((state) => state.brands.entities);
     const styles = useSelector((state) => state.styles.entities);
     const user = useSelector((state) => state.user.entities)
 
-    console.log(user)
-
-    useEffect(() => {
-        dispatch(fetchBrands());
-      }, [dispatch]);
-
-      useEffect(() => {
-        dispatch(fetchStyles());
-      }, [dispatch]);
+    
+    let findBrand = brands.filter((b) => b.id === parseInt(brandId))
 
       function handleBrand(e){
         setBrandId(e.target.value)
+        setAddBrand(findBrand)
       }
 
       function handleStyle(e){
@@ -54,24 +50,24 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
         setImage(e.target.files[0])
       }
 
-      console.log(image)
+      console.log(findBrand)
 
-      const formData = new FormData();
-      formData.append('name', name);
-      formData.append('price', price);
-      formData.append('size', size);
-      formData.append('featured_image', image);
-      formData.append('notes', description);
-      formData.append('user_id', user.id);
-      formData.append('brand_id', brandId);
-      formData.append('style_id', styleId);
+    //   const formData = new FormData();
+    //   formData.append('name', name);
+    //   formData.append('price', price);
+    //   formData.append('size', size);
+    //   formData.append('featured_image', image);
+    //   formData.append('notes', description);
+    //   formData.append('user_id', user.id);
+    //   formData.append('brand_id', brandId);
+    //   formData.append('style_id', styleId);
 
-      console.log(formData)
+    //   console.log(formData)
+
 
       function handleSubmit(e){
         e.preventDefault() 
-        setAddPieceBtnClick(!addPieceBtnClick) 
-               
+        setAddPieceBtnClick(!addPieceBtnClick)        
         fetch("/pieces", {
             method: "POST",
             headers: {
@@ -92,6 +88,7 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
             if (r.ok) {
               r.json().then((p) =>{
                 dispatch(pieceAdded(p))
+                // dispatch(renderBrand(addBrand))
               })
             } else {
               r.json().then((err) => console.log(err.errors));
