@@ -72,8 +72,8 @@ function StyleForm({addStyleBtnClick, setAddStyleBtnClick }) {
             onChange={(e) => setDescription(e.target.value)}
            ></textarea>
           <br/>
-          <label className='form-label' id='category-form'>Category: 
-                <select  className="select-form" onChange={(e) => setCategory(e.target.value)}className="selector">
+          <label id='category-form'>Category: </label> 
+                <select  className="select-form" onChange={(e) => setCategory(e.target.value)}>
                     <option value={null}></option>
                     <option value="Top">Top</option>
                     <option value="Bottom">Bottom</option>
@@ -85,7 +85,7 @@ function StyleForm({addStyleBtnClick, setAddStyleBtnClick }) {
                     <option value="Shoe">Shoe</option>
                     <option value="Accessories">Accessories</option>
                 </select>   
-            </label> 
+            
         <br/>
           <div className="add-style-btn">
           <button className="btn" type='submit'>Add Style</button>
