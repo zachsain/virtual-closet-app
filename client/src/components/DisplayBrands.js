@@ -19,7 +19,7 @@ function DisplayBrands({brands, showPieceClick, setShowPieces, showPieces}) {
     })
 
   return (
-    <div className="display-brands-container">
+    <div className="display-container">
         {brandCard}
     </div>
   )

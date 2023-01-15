@@ -31,36 +31,8 @@ function PieceEditForm({
     const [size, setSize] = useState("")
     const [image, setImage] = useState(null)
     const [imageUrl, setImageUrl] = useState("")
-    // const [showBrandForm, setShowBrandForm] = useState(false)
-    // const [brandName, setBrandName] = useState("")
-    // const [headQuarters, setHeadQuarters] = useState("")
-    // const [logoUrl, setLogoUrl] = useState("")
-    // const [brandDescription, setBrandDescription] = useState("")
-    // const [styleId, setStyleId] = useState(0)
-    // const [brandId, setBrandId] = useState(0)
-    // const [styleClick, setStyleClick] = useState(false)
-    // const [brandClick, setBrandClick] = useState(false)
     const dispatch = useDispatch()
-    // const brands = useSelector((state) => state.brands.entities);
-    // const styles = useSelector((state) => state.styles.entities);
-    // const user = useSelector((state) => state.user.entities)
-
-    // useEffect(() => {
-    //     dispatch(fetchBrands());
-    //   }, [dispatch]);
-
-    //   useEffect(() => {
-    //     dispatch(fetchStyles());
-    //   }, [dispatch]);
-
-    //   function handleBrand(e){
-    //     setBrandId(e.target.value)
-    //   }
-
-    //   function handleStyle(e){
-    //     setStyleId(e.target.value)
-    //   }
-
+  
       function onImageChange(e){
         console.log(e.target.files[0])
         setImage(e.target.files[0])
@@ -99,24 +71,13 @@ function PieceEditForm({
       }
 
   return (
-    <div className="piece-form-container">
-        <form onSubmit={handleSubmit}>
-        {/* <label className='category-form'>Brand:
-                <select onChange={handleBrand}className="selector">
-                    <option></option>
-                    {brands.map((b) => {
-                        return <option key={b.id} value={b.id}>{b.name}</option>
-                     
-                    })}
-                </select>    
-        </label>
-        <button className="add-new-brand-piece" onClick={(e) => setBrandClick(!brandClick)}> 
-            <BsPlusCircle/> 
-        </button> */}
+    <div className= "form-container">
+        <form className="forms" onSubmit={handleSubmit}>
           <br />
-          <label className='portfolio-form-label'>Name:</label>
+          <label></label>
           <input
             type='text'
+            className="form-inputs"
             autoComplete="off"
             placeholder={pieceName}
             value={name}
@@ -127,18 +88,20 @@ function PieceEditForm({
             <input type="file" accept="image/*" multiple={false} onChange={onImageChange} />
           </label> */}
           {/* <br/> */}
-          <label className='portfolio-form-label'>Image:</label>
+          <label className='form-label'></label>
           <input
             type='text'
+            className="form-inputs"
             autoComplete="off"
             placeholder="URL..."
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
           ></input>
           <br />
-          <label className='portfolio-form-label'>Price:</label>
+          <label className='form-label'></label>
           <input
             type='text'
+            className="form-inputs"
             autoComplete="off"
             placeholder={piecePrice}
             value={price}
@@ -146,9 +109,10 @@ function PieceEditForm({
           ></input>
           <br />
 
-          <label className='portfolio-form-label'>Size:</label>
+          <label className='form-label'></label>
           <input
             type='text'
+            className="form-inputs"
             autoComplete="off"
             placeholder={pieceSize}
             value={size}
@@ -156,9 +120,10 @@ function PieceEditForm({
           ></input>
           <br />
 
-          <label className='portfolio-form-label'>Description of Piece:</label>
+          <label className='form-label'></label>
           <textarea
             type='text'
+            className="form-inputs"
             placeholder={pieceDescription}
             value={description}
             onChange={(e) => setDescription(e.target.value)}

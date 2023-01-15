@@ -11,9 +11,9 @@ function Profile({loaded}){
 
     return(
         <div className="profile-container">
-            <h2>Welcome To Your Virtual Closet</h2>
+            <h2 className="pages-header">Closet</h2>
             <div className="add-piece-btn-container">
-                <button className='btn' onClick={(e) => setAddPieceBtnClick(!addPieceBtnClick)}> 
+                <button id="add-styles-btn" className='btn' onClick={(e) => setAddPieceBtnClick(!addPieceBtnClick)}> 
                     Add New Piece
                 </button>
             {addPieceBtnClick ? (<PieceForm addPieceBtnClick={addPieceBtnClick} setAddPieceBtnClick={setAddPieceBtnClick} />) : (null)}

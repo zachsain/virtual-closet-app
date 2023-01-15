@@ -31,7 +31,7 @@ let closet = user.pieces.map((p) => {
             />
 })
   return (
-    <div>
+    <div className="display-container">
         {closet}
     </div>
 

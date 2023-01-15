@@ -36,15 +36,19 @@ function BrandCard({
     
 
   return (
-    <div className="brand-card-container">
-        <div className="brand-card">
-        <h3 className="brand-name">{name}</h3>
-        <h4 className="brand-hq">{headQuarters}</h4>
-        <img className="brand-img" src={logo} alt="brand-image" />
-        <p className="brand-description">{description}</p>
-        {showPieceClick ? 
-                (<div><button onClick={() => (setShowPieces(!showPieces))}>Show My Pieces</button> </div> ) : (null)}
-            {showPieces ? (displayPiece) : (null)}
+    <div className="card-container">
+        <div>
+    
+        <div className="cards">
+            <h2 className="card-name">{name}</h2>
+            <h4 className="card-name">{headQuarters}</h4>
+            <img className="style-img" src={logo} alt="brand-image" />
+            <h3 className="card-description-header">About this brand:</h3>
+            <p className="card-description">{description}</p>
+            {showPieceClick ? 
+                    (<div><button className="btn" onClick={() => (setShowPieces(!showPieces))}>Show My Pieces</button> </div> ) : (null)}
+                {showPieces ? (displayPiece) : (null)}
+        </div>
         </div>
     </div>
   )

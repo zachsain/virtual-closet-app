@@ -40,35 +40,40 @@ function BrandForm({showBrandForm, setShowBrandForm }) {
 
   return (
     <div className="brand-form-container">
+        <div className="form-container">
         <form onSubmit={handleSubmit}>
-          <label className='brand-form-label'>Brand Name:</label>
+          <label className='brand-form-label'></label>
           <input
             type='text'
             autoComplete="off"
+            className="form-inputs"
             placeholder="Brand Name..."
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></input>
           <br />
-        <label className='brand-form-label'>Head Quarters:</label>
+        <label className='brand-form-label'></label>
           <input
             type='text'
+            className="form-inputs"
             placeholder="Head Quarters..."
             value={headQuarters}
             onChange={(e) => setHeadQuarters(e.target.value)}
            ></input>
           <br/>
-          <label className='brand-form-label'>Logo:</label>
+          <label className='brand-form-label'></label>
           <input
             type='text'
+            className="form-inputs"
             placeholder="Logo URL..."
             value={logoUrl}
             onChange={(e) => setLogoUrl(e.target.value)}
            ></input>
           <br/>
-          <label className='brand-form-label'>Brand Desciption:</label>
+          <label className='brand-form-label'></label>
           <textarea
             type='text'
+            className="form-inputs"
             placeholder="Description..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -79,6 +84,7 @@ function BrandForm({showBrandForm, setShowBrandForm }) {
           </div>
 
         </form>
+        </div>
     </div>
   )
 }

@@ -35,11 +35,11 @@ function Brands({}) {
       }
 
   return (
-    <div>
+    <div className="styles-page-container">
         <h1 className="pages-header"> BRANDS </h1>
         <div className="add-brand-btn">
-            <button  id="add-brand-btn" onClick={handleBrandClick} data-inline="true"  className="btn">Add New Brand</button>
-            <button id="my-brands-btn" onClick={handleMyBrandClick} data-inline="true"  className="btn">See My Brands</button>
+            <button  id="add-styles-btn" onClick={handleBrandClick} data-inline="true"  className="btn">Add New Brand</button>
+            <button id="my-styles-btn" onClick={handleMyBrandClick} data-inline="true"  className="btn">See My Brands</button>
         </div>
         {showBrandForm ? 
             (<BrandForm showBrandForm={showBrandForm} setShowBrandForm={setShowBrandForm}/>) 

@@ -50,19 +50,21 @@ function PieceCard({
 
 
   return (
-    <div className="piece-card-contatiner">
-        <div className="piece-card">
-            <div onClick={handlePieceClick}>
-             <h3 className="piece-name">{name}</h3>
-             <img className="piece-img" src={imageUrl} alt="piece-image" />
-             <h4>Price: {price} </h4>
-             <h5>{size}</h5>
-             <p className="piece-description">{description}</p>
+    <div >
+        <div className="card-container">
+            <div className="click-container" onClick={handlePieceClick}>
+             <h2 className="card-name">{name}</h2>
+             <img className="style-img" src={imageUrl} alt="piece-image" />
+             <h4 className="card-name">Price: {price} </h4>
+             <h5 className="card-name">Size: {size}</h5>
+             <h3 className="card-description-header">About this piece:</h3>
+             <p className="card-description">{description}</p>
             {/* {loaded ? (<div><h4>Brand: {brand.name}</h4></div>) : (null)} */}
             </div>
 
-            {displayDelete ? ( <button onClick={handleDelete}>
-            <FaTimesCircle />
+            {displayDelete ? ( <button id="delete-btn" className="btn" onClick={handleDelete}>
+                Remove
+            {/* <FaTimesCircle  size="1.3em"  /> */}
             </button>) : (null)}
             {/* <button onClick={handleDelete}>
             <FaTimesCircle />

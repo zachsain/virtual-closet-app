@@ -20,7 +20,10 @@ function Logout ({ user, setUser }) {
    
       return(
         <div id="logout-component">
-          <button  id="logout-btn"  onClick={handleClick}>Logout</button>
+          <h3 className="pages-header"> So long... </h3>
+          <div className="good-bye-btn">
+          <button className="btn" id="logout-btn"  onClick={handleClick}>Logout</button>
+          </div>
         </div>
       )
 }

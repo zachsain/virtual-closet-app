@@ -45,18 +45,21 @@ function DisplaySinglePiece() {
     }
 
   return (
-    <div className="piece-card-contatiner">
-    <div className="piece-card">
-        <h3 className="piece-name">{piece.name}</h3>
-        <img className="piece-img" src={piece.image_url} alt="piece-image" />
-        <h4>Price: {piece.price} </h4>
-        <h5>Size: {piece.size}</h5>
-        <p className="piece-description">{piece.notes}</p>
+    <div className="single-piece-container">
+    <div className="card-container">
+        <h2 className="card-name">{piece.name}</h2>
+        <img className="style-img" src={piece.image_url} alt="piece-image" />
+        <h4 className="card-name">Price: {piece.price} </h4>
+        <h5 className="card-name">Size: {piece.size}</h5>
+        <h3 className="card-description-header">About this piece:</h3>
+        <p className="card-description">{piece.notes}</p>
         {/* {loaded ? (<div><h4>Brand: {brand.name}</h4></div>) : (null)} */}
-        <button onClick={handleDelete}>
-        <FaTimesCircle size="1.7em" id="edit-btn-icon" />
+        <br/>
+        <button  id="delete-btn" className="btn" onClick={handleDelete}>
+            Remove
         </button>
-        <button id="edit-btn" onClick={() => setEditClick(!editClick)}>
+        <br/>
+        <button className="btn" id="edit-btn" onClick={() => setEditClick(!editClick)}>
             <FiEdit size="1.7em" id="edit-btn-icon"/>
         </button>
         {editClick ? (<PieceEditForm
@@ -75,7 +78,7 @@ function DisplaySinglePiece() {
 
     </div>
     <div>
-        <h5>Made By:</h5>
+        <h3 className="single-piece-header">Made By:</h3>
         <BrandCard 
             name={filterBrand.name}
             headQuarters={filterBrand.head_quarters}
@@ -85,7 +88,7 @@ function DisplaySinglePiece() {
     </div>
    
     <div>
-        <h5>Style: </h5>
+        <h3 className="single-piece-header">Style: </h3>
         <StylesCard 
             name={filteredStyle.name}
             photo={filteredStyle.url_photo}

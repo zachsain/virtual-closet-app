@@ -20,7 +20,7 @@ function DisplayStyles({styles, showPieceClick, showPieces, setShowPieces}) {
    })
 
   return (
-    <div className="display-styles-container">
+    <div className="display-container">
         {styleCard}
     </div>
   )

@@ -81,26 +81,18 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
       }
 
   return (
-    <div className="piece-form-container">
-        <form onSubmit={handleSubmit}>
-        <label className='category-form'>Brand:
-                <select onChange={handleBrand}className="selector">
-                    <option></option>
-                    {brands.map((b) => {
-                        return <option key={b.id} value={b.id}>{b.name}</option>
-                     
-                    })}
-                </select>    
-        </label>
-        <button className="add-new-brand-piece" onClick={(e) => setBrandClick(!brandClick)}> 
+    <div className="form-container">
+        <form className="forms" onSubmit={handleSubmit}>
+        {/* <button className="add-new-brand-piece" onClick={(e) => setBrandClick(!brandClick)}> 
             <BsPlusCircle/> 
-        </button>
+        </button> */}
           <br />
-          <label className='portfolio-form-label'>Name:</label>
+          <label className='form-label'></label>
           <input
             type='text'
+            className="form-inputs"
             autoComplete="off"
-            placeholder="Sweater..."
+            placeholder="Name..."
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></input>
@@ -109,18 +101,20 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
             <input type="file" accept="image/*" multiple={false} onChange={onImageChange} />
           </label> */}
           {/* <br/> */}
-          <label className='portfolio-form-label'>Image:</label>
+          <label className='portfolio-form-label'></label>
           <input
             type='text'
+            className="form-inputs"
             autoComplete="off"
             placeholder="URL..."
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
           ></input>
           <br />
-          <label className='portfolio-form-label'>Price:</label>
+          <label className='portfolio-form-label'></label>
           <input
             type='text'
+            className="form-inputs"
             autoComplete="off"
             placeholder="$100..."
             value={price}
@@ -128,9 +122,10 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
           ></input>
           <br />
 
-          <label className='portfolio-form-label'>Size:</label>
+          <label className='portfolio-form-label'></label>
           <input
             type='text'
+            className="form-inputs"
             autoComplete="off"
             placeholder="Medium..."
             value={size}
@@ -138,28 +133,39 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
           ></input>
           <br />
 
-          <label className='portfolio-form-label'>Description of Piece:</label>
+          <label className='portfolio-form-label'></label>
           <textarea
             type='text'
+            className="form-inputs"
             placeholder="I think it'd go well with..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
            ></textarea>
           <br/> 
-          <label className='category-form'>Style:
-                <select onChange={handleStyle}className="selector">
+          <div className="brand-style-selectors">
+          <label  id='category-form' >Brand:</label>
+                <select className="select-form" onChange={handleBrand}>
+                    <option></option>
+                    {brands.map((b) => {
+                        return <option key={b.id} value={b.id}>{b.name}</option>
+                     
+                    })}
+                </select>    
+            </div>
+        <br/>
+        <div className="brand-style-selectors">
+          <label id='category-form' >Style:</label>
+                <select className="select-form" onChange={handleStyle}>
                     <option></option>
                     {styles.map((s) => {
                         return <option key={s.id} value={s.id}>{s.name}</option>
                      
                     })}
-                </select>    
-        </label>
-        <button className="add-new-style-piece" onClick={(e) => setStyleClick(!styleClick) }> 
-            <BsPlusCircle/> 
-        </button>
+                </select>   
+        </div> 
         <br/>
-        <div className="add-piece-btn">
+
+        <div className="add-style-btn">
           <button className="btn" type='submit'>Add Piece</button>
           </div>
 
