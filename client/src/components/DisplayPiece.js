@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PieceCard from './PieceCard';
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBrands } from "../redux/brandsSlice";
+import '../App.css'
 
 function DisplayPiece({loaded}) {
 
@@ -30,7 +31,7 @@ let closet = user.pieces.map((p) => {
             />
 })
   return (
-    <div>Display Piece
+    <div>
         {closet}
     </div>
 

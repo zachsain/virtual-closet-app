@@ -1,5 +1,6 @@
 import React from 'react'
 import StylesCard from './StylesCard'
+import '../App.css'
 
 function DisplayStyles({styles, showPieceClick, showPieces, setShowPieces}) {
 
@@ -20,7 +21,6 @@ function DisplayStyles({styles, showPieceClick, showPieces, setShowPieces}) {
 
   return (
     <div className="display-styles-container">
-        <h3> Styles </h3>
         {styleCard}
     </div>
   )

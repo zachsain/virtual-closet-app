@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {styleAdded} from "../redux/stylesSlice";
+import '../App.css'
 
 
 function StyleForm({addStyleBtnClick, setAddStyleBtnClick }) {
@@ -40,35 +41,39 @@ function StyleForm({addStyleBtnClick, setAddStyleBtnClick }) {
     }
 
   return (
-    <div className="style-form-container">
-         <form onSubmit={handleSubmit}>
-          <label className='portfolio-form-label'>Style Name:</label>
+    <div>
+    <div className="form-container">
+         <form className="forms" onSubmit={handleSubmit}>
+          <label className='form-label'></label>
           <input
             type='text'
+            className="form-inputs"
             autoComplete="off"
             placeholder="Style Name..."
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></input>
           <br />
-        <label className='portfolio-form-label'>Exmample Photo:</label>
+        <label className='form-label'></label>
           <input
+            className="form-inputs"
             type='text'
             placeholder="Paste URL..."
             value={urlPhoto}
             onChange={(e) => setUrlPhoto(e.target.value)}
            ></input>
           <br/>
-          <label className='portfolio-form-label'>Style Desciption:</label>
+          <label className='form-label'></label>
           <textarea
+            className="form-inputs"
             type='text'
             placeholder="Description..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
            ></textarea>
           <br/>
-          <label className='category-form'>Select Category:
-                <select  onChange={(e) => setCategory(e.target.value)}className="selector">
+          <label className='form-label' id='category-form'>Category: 
+                <select  className="select-form" onChange={(e) => setCategory(e.target.value)}className="selector">
                     <option value={null}></option>
                     <option value="Top">Top</option>
                     <option value="Bottom">Bottom</option>
@@ -79,16 +84,17 @@ function StyleForm({addStyleBtnClick, setAddStyleBtnClick }) {
                     <option value="Hat">Hat</option>
                     <option value="Shoe">Shoe</option>
                     <option value="Accessories">Accessories</option>
-                </select>    
-        </label> 
+                </select>   
+            </label> 
+        <br/>
           <div className="add-style-btn">
           <button className="btn" type='submit'>Add Style</button>
           </div>
-
         </form>
 
 
 
+    </div>
     </div>
   )
 }

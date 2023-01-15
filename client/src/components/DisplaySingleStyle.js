@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import StylesCard from './StylesCard';
 import PieceCard from './PieceCard';
+import '../App.css'
 
 
 function DisplaySingleStyle() {

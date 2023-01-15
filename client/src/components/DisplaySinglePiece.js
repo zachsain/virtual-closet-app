@@ -8,6 +8,7 @@ import BrandCard from './BrandCard';
 import StylesCard from './StylesCard';
 import { FiEdit } from "react-icons/fi";
 import PieceEditForm from './PieceEditForm';
+import '../App.css'
 
 function DisplaySinglePiece() {
     const params = useParams();

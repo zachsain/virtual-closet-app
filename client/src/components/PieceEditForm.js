@@ -9,6 +9,7 @@ import StyleForm from './StyleForm';
 import {pieceUpdated} from "../redux/userSlice";
 import { BsPlusCircle } from "react-icons/bs";
 import {pieceDeleted} from "../redux/pieceSlice";
+import '../App.css'
 
 
 function PieceEditForm({

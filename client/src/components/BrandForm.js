@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {brandAdded} from "../redux/brandsSlice";
 import { useSelector, useDispatch } from "react-redux";
+import '../App.css'
 
 function BrandForm({showBrandForm, setShowBrandForm }) {
     const [name, setName] = useState("")

@@ -11,12 +11,21 @@
     height: 100%;
     display: flex;
     flex-direction: row;
-    /* flex-direction: row; */
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding:1rem;
+    /* border-color: black; */
+    margin-bottom: 10px;
+    background-color: rgb(251, 246, 246);
 }
 
+.nav-btn a{
+    font-family: 'Vogue', sans-serif;
+    font-weight: 1000;
+    font-size: larger;
+    padding-left: 30px;
+    padding-right: 30px
+}
 /* .navbar span {
     color: #5651e5;
 }

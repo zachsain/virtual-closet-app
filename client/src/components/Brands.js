@@ -3,6 +3,7 @@ import BrandForm from './BrandForm'
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBrands } from "../redux/brandsSlice";
 import DisplayBrands from './DisplayBrands'
+import '../App.css'
 
 
 function Brands({}) {
@@ -35,11 +36,10 @@ function Brands({}) {
 
   return (
     <div>
+        <h1 className="pages-header"> BRANDS </h1>
         <div className="add-brand-btn">
-            <button onClick={handleBrandClick} className="btn">Add New Brand</button>
-        </div>
-        <div className="add-brand-btn">
-            <button onClick={handleMyBrandClick} className="btn">See My Brands</button>
+            <button  id="add-brand-btn" onClick={handleBrandClick} data-inline="true"  className="btn">Add New Brand</button>
+            <button id="my-brands-btn" onClick={handleMyBrandClick} data-inline="true"  className="btn">See My Brands</button>
         </div>
         {showBrandForm ? 
             (<BrandForm showBrandForm={showBrandForm} setShowBrandForm={setShowBrandForm}/>) 

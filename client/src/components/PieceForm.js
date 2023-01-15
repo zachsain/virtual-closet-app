@@ -9,6 +9,7 @@ import StyleForm from './StyleForm';
 import {pieceAdded} from "../redux/userSlice";
 import {renderBrand} from "../redux/userSlice";
 import { BsPlusCircle } from "react-icons/bs";
+import '../App.css'
 
 function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
 

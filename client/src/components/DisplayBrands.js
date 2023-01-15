@@ -1,5 +1,6 @@
 import React from 'react'
 import BrandCard from './BrandCard'
+import '../App.css'
 
 function DisplayBrands({brands, showPieceClick, setShowPieces, showPieces}) {
 
@@ -19,7 +20,6 @@ function DisplayBrands({brands, showPieceClick, setShowPieces, showPieces}) {
 
   return (
     <div className="display-brands-container">
-        <h1 className="brands-header"> Brands </h1>
         {brandCard}
     </div>
   )

@@ -3,7 +3,59 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: white
 }
+
+/* PAGES */
+
+
+/* FORMS  */
+.forms{
+  /* border: 4px solid black; */
+  text-align: center;
+  margin: 15px;
+
+}
+
+.form-inputs {
+  margin: 15px 0;
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  border: 1px solid rgba(10, 180, 180, 1);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: black;
+  outline: none;
+}
+
+#category-form{
+  margin: 15px 0;
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  border: 1px solid rgba(10, 180, 180, 1);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: black;
+  outline: none;
+  font-family: "Vogue";
+}
+
+.select-form{
+  padding-left: 50x;
+}
+
+.add-style-btn{
+  padding-top: 35px;
+}
+.form-label{
+  text-align: center;
+}
+
+/* CARDS */
 
 .brand-card{
   margin: 30px;
@@ -17,26 +69,52 @@
 
 }
 
-.style-card{
+.cards{
   margin: 30px;
-  border: 2px solid rgb(161, 156, 156);
-  /* border-color: #161818; */
+  /* padding: 40px; */
+  /* border: 5px solid rgb(161, 156, 156); */
+  /* border: 4px solid black; */
 }
 
-.style-img{
+.card-name{
+ font-family: 'Classy Vogue', sans-serif;
+ padding: 10px
+ 
+}
+
+.card-img{
+   padding: 10px
+}
+
+.card-description{
+  padding: 10px;
   display: inline-block;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  font-family: 'Classy Vogue', sans-serif;
+  font-size: larger;
 }
 
+.card-description-header{
+   /* display: inline-block; */
+   padding: 10px;
+   font-family: 'Classy Vogue', sans-serif;
+   font-weight: 1000;
 
+}
+.card-container{
+  margin: 30px;
+  border: 4px solid black;
+  background-color: rgb(251, 246, 246);
 
-/* PROFILE PAGE */
+}
+
+.display-styles-container{
+  /* display: flex;
+  flex-direction: row; */
+  
+}
+
+/* IMG */
+
 .brand-img {
   display: inline-block;
   width: 150px;
@@ -59,36 +137,24 @@
   background-size: cover;
 }
 
-/* PORTFOLIO */
+.style-img{
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 
-.portfolio-container {
-  /* width: 160px; */
-  height: 50%;
-  padding: 20px;
-  border: 2px solid rgb(161, 156, 156);
-  background: rgb(255, 255, 255); 
-}
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+} 
 
-.portfolio-header{
-  text-align: left;
-  padding-bottom: 4px;
-  /* padding-right: 30%; */
-}
+/* HEADERS */
 
- /* PORTFOLIO CARD */
-
-.portfolio-card-container{
-  padding: 3%;
-  margin: 1%;
-  border: 2px solid rgb(250, 245, 245); ;
-}
-
-.portfolio-card-containe p{
-  text-align: left;
-}
-
-.portfolio-name{
-  text-align: left;
+.pages-header{
+  font-family: 'Classy Vogue', sans-serif;
+  font-weight: 1000;
+  font-size: 50px;
+  color: black
 }
 
 /* BUTTONS */
@@ -99,12 +165,13 @@
   align-items: center;
   outline: none;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 17px;
   padding: 0 12px;
   line-height: 20px;
   height: 30px;
   max-height: 30px;
-  background: #566AE5;
+  background: rgb(33, 29, 29);
+  font-family: 'Classy Vogue', sans-serif;
   font-weight: 700;
   border: 0;
   border-radius: 0;
@@ -113,79 +180,19 @@
   transition-property: box-shadow;
   transition-duration: 150ms;
 }
-/* .navbar-container{
-  width: 100%;
-  min-height: 100vh;
-  padding-left: 8%;
-  box-sizing: border-box;
-  overflow: hidden;
+
+#add-styles-btn{
+  margin: 15px;
 }
 
-.nav-btn{
-  flex: 1;
-  text-align: right;
-}
-.nav-btn-container{
-  width: 100%;
-  display: flex;
-  align-items: center;
+#my-styles-btn{
+  margin: 15px;
 }
 
-.nav-bar-icons{
-  width: 50px;
-  cursor: pointer;
-  margin: 30px 0;
-} */
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#add-brand-btn{
+  margin: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#my-brand-btn{
+  margin: 15px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-/* .btn{
-  color: #fff;
-  padding: 12px 24px;
-  background-image: linear-gradient(45deg,#5651e5, #709dff);
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: .4s;
-  cursor: pointer;
-}
-
-.btn :active{
-  transform: translate(4px);
-  box-shadow: 0px 0px 1px rgba(0,0,0,0,.2);
-  border-bottom: none;
-} */

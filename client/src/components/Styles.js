@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { fetchStyles } from "../redux/stylesSlice";
 import { userAdded } from '../redux/userSlice';
+import '../App.css'
 
 function Styles() {
   const [addStyleBtnClick, setAddStyleBtnClick] = useState(false)
@@ -23,13 +24,15 @@ function Styles() {
   }
   return (
     <div className="styles-page-container">
+        <h3 className="pages-header"> STYLES </h3>
         <div className="styles-btn">
-            <button onClick={(e) => setAddStyleBtnClick(!addStyleBtnClick)} className="btn">Add New Style</button>
+            <button id="add-styles-btn" data-inline="true" onClick={(e) => setAddStyleBtnClick(!addStyleBtnClick)} className="btn">Add New Style</button>
+            <button id="my-styles-btn" data-inline="true" onClick={handeMyStyleClick} className="btn">See My Styles</button>
         </div>
 
-        <div className="styles-btn">
-            <button onClick={handeMyStyleClick} className="btn">See My Styles</button>
-        </div>
+        {/* <div className="styles-btn">
+            <button data-inline="true" onClick={handeMyStyleClick} className="btn">See My Styles</button>
+        </div> */}
         {addStyleBtnClick ? (<StyleForm addStyleBtnClick={addStyleBtnClick} setAddStyleBtnClick={setAddStyleBtnClick} />) : (null)}
         {myStyleBtnClick ? ( <DisplayStyles setShowPieces={setShowPieces} showPieces={showPieces} showPieceClick={showPieceClick} styles={myStyles.styles} />) : (  <DisplayStyles showPieceClick={showPieceClick}  styles={styles} />)}
         {/* <DisplayStyles styles={styles} /> */}

@@ -35,14 +35,16 @@ function StylesCard({name, photo, description, id, styles, showPieceClick, showP
 
 
   return (
-    <div className="style-card-container">
+    <div className="card-container">
         <div> 
-            <div className="style-card">
-            <h3 className="style-name">{name}</h3>
+            <div className="cards">
+            <h2 className="card-name">{name}</h2>
             <img className="style-img" src={photo} alt="style-image" />
-            <p className="brand-description">{description}</p>
+            <br/>
+            <h3 className="card-description-header">About this style:</h3>
+            <p className="card-description">{description}</p>
             {showPieceClick ? 
-                (<div><button onClick={() => (setShowPieces(!showPieces))}>Show My Pieces</button> </div> ) : (null)}
+                (<div><button className="btn" onClick={() => (setShowPieces(!showPieces))}>Show My Pieces</button> </div> ) : (null)}
             {showPieces ? (dislayPiece) : (null)}
         </div>
     </div>

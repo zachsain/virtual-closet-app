@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import '../App.css';
 import PieceCard from './PieceCard';
 import { useSelector, useDispatch } from "react-redux";
+import '../App.css'
 
 function BrandCard({
     name, 
