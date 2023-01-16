@@ -10,23 +10,24 @@ function Login({setUser}){
     return (
 
         <div>
-        <h1 id='welcome'>Test </h1>
+        <h1 className="pages-header"> Welcome</h1>
+        <h3 className="new-account-header"> to your new closet</h3>
         <div className="login-form">
         {showLogin ? (
           <div>
-            <h2>Login:</h2>
             <LoginForm setUser={setUser} />
             <br />
-            <div className="signup-btn">
+            <div className="signup-container">
+              <h3 className="new-account-header">Or...</h3>
             <button id="signup-btn" className='btn' onClick={() => setShowLogin(false)}>Signup</button>
             </div>
           </div>
         ) : (
           <div>
-            <h2>Create a new account:</h2>
             <SignUpForm setUser={setUser} />
-            <h3>If you're already signed up log in here:</h3>
-            <div className="signup-btn">
+            <br />
+            <div className="signup-container">
+            <h3 className="new-account-header">Or...</h3>
             <button id="signup-btn" className='btn' onClick={() => setShowLogin(true)}>Login</button>
             </div>
           </div>

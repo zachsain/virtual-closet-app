@@ -64,6 +64,14 @@
   margin-right: 30px;
   padding-bottom: 5px;
 }
+
+.signup-container{
+  background-color: rgb(251, 246, 246);
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-bottom: 20px;
+
+}
 /* CARDS */
 
 .brand-card{
@@ -167,6 +175,21 @@
   color: black
 }
 
+.instructions{
+  font-family: 'Classy Vogue', sans-serif;
+  margin: 30px;
+  padding-top: 30px;
+  color: black
+}
+
+
+.new-account-header{
+  font-family: 'Classy Vogue', sans-serif;
+  font-weight: 800;
+  padding: 19px;
+  /* font-size: 50px; */
+  color: blac
+}
 .single-piece-header{
   font-family: 'Classy Vogue', sans-serif;
   font-weight: 800;
@@ -197,6 +220,7 @@
   transition-property: box-shadow;
   transition-duration: 150ms;
 }
+
 
 /* #logout-btn{
   padding: 11px;

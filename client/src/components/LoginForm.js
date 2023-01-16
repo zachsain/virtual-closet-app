@@ -22,7 +22,7 @@ function LoginForm({setUser}){
         }).then((r) => {
           setIsLoading(false);
           if (r.ok) {
-            // history.push('/')
+            history.push('/')
             r.json().then((user) => setUser(user));
           } else {
             r.json().then((err) => setErrors(err.errors));
@@ -33,10 +33,11 @@ function LoginForm({setUser}){
 
 return (
   <div>
-    <form onSubmit={handleLogin}>
-          <label className='signupLabel'>Username:</label>
+    <div className="form-container">
+    <form  className="forms" onSubmit={handleLogin}>
+          <label className='form-label'></label>
           <input
-            className='login-input'
+            className="form-inputs"
             type='text'
             id="username"
             autoComplete="off"
@@ -44,9 +45,9 @@ return (
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           ></input><br />
-        <label className='signupLabel'>Password:</label>
+        <label className='form-label'></label>
           <input
-            className='login-input'
+            className="form-inputs"
             type='password'
             id="password"
             placeholder="Password"
@@ -55,12 +56,13 @@ return (
             onChange={(e) => setPassword(e.target.value)}
           ></input><br />
           <div className="login-btn">
-          <button id="login-btn" className="btn" type='submit'>Login
+          <button className="btn" type='submit'>Login
           </button>
           </div>
           {isLoading ? (<h1>Loading...</h1>) : (null)}
         </form>
-        </div>
+    </div>
+  </div>
  
 )
   

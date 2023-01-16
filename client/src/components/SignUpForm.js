@@ -25,7 +25,7 @@ function SignUpForm({setUser}){
               body: formData
             })
             .then(r => r.json())
-            .then(user => (setUser(user), console.log(user)))
+            .then(user => (setUser(user), history.push('/')))
         }
 
     function onImageChange(e){
@@ -35,49 +35,50 @@ function SignUpForm({setUser}){
   
     return (
         <div>
-        <div id="signup">
-          <form className="signup-form" onSubmit={handleSubmit}>
-            <label className="signupLabel">Username: </label>
+        <div className="form-container">
+        <h4 className="new-account-header">Create a new account:</h4>
+          <form className="forms" onSubmit={handleSubmit}>
+            <label className='form-label'> </label>
             <input
-              className="signup-input"
+              className="form-inputs"
               type="text"
               id="name"
               autoComplete="off"
-              placeholder="name"
+              placeholder="user name..."
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             ></input>
             <br />
   
-            <label className="signupLabel">Email:</label>
+            <label className='form-label'></label>
             <input
-              className="signup-input"
+              className="form-inputs"
               type="email"
               id="email"
               autoComplete="off"
-              placeholder="email@example.com"
+              placeholder="email@example.com..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
             <br />
   
-            <label className="signupLabel">Password:</label>
+            <label className='form-label'></label>
             <input
-              className="signup-input"
+              className="form-inputs"
               type="password"
               id="password"
               autoComplete="current-password"
-              placeholder="password"
+              placeholder="password..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
             <br />
 
-            <input type="file" accept="image/*" multiple={false} onChange={onImageChange} />
+            <input className="form-inputs" type="file" accept="image/*" multiple={false} onChange={onImageChange} />
             
             <br />
 
-            <div className="signup-btn">
+            <div className="add-style-btn">
             <button id="signup-btn" className="btn" type="submit">Sign up</button>
             </div>
           </form>

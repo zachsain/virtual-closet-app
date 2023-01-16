@@ -12,6 +12,7 @@ import { fetchBrands } from "./redux/brandsSlice";
 import DisplaySinglePiece from "./components/DisplaySinglePiece";
 import DisplaySingleStyle from "./components/DisplaySingleStyle";
 import { fetchStyles } from "./redux/stylesSlice";
+import Home from "./components/Home";
 import './App.css';
 
 function App() {
@@ -90,6 +91,9 @@ function App() {
        <Route  exact path="/styles/:id">
         <DisplaySingleStyle />
        </Route>
+       <Route exact path="/home">
+          <Home />
+       </Route> 
        <Route exact path="/">
           <Profile loaded={loaded}/>
        </Route>  
