@@ -93,7 +93,7 @@ function PieceEditForm({
             type='text'
             className="form-inputs"
             autoComplete="off"
-            placeholder="URL..."
+            placeholder="URL Photo..."
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
           ></input>

@@ -24,10 +24,6 @@ function DisplaySinglePiece() {
     let filteredStyle = styles.find(s => s.id == piece.style_id ) 
     let style = user.styles.find(s => s.id == piece.style_id)
 
-    console.log(user)
-    console.log(filterBrand)
-    // console.log(style.name)
-    // console.log(filterBrand)
 
     function handleDelete(e){ 
         console.log(params.id)
@@ -36,7 +32,6 @@ function DisplaySinglePiece() {
           })
             .then((r) => {
               if (r.ok) {
-                console.log("deleted")
                 history.push('/')
                 dispatch(pieceDeleted(params.id))
               }

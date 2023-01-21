@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../App.css';
 import PieceCard from './PieceCard';
 import { useSelector, useDispatch } from "react-redux";
@@ -11,16 +11,17 @@ function BrandCard({
     description, 
     id, 
     showPieceClick,
-    showPieces,
-    setShowPieces
+    myBrandBtnClick
     }) {
    
-    // const [showPieces, setShowPieces] = useState(false)
-
     const user = useSelector((state) => state.user.entities)
-
     const pieces = user.pieces.filter((p) => p.brand_id === id)
+    const [piecesShow, setPiecesShow] = useState(false)
 
+    useEffect(() => {
+        setPiecesShow(false)
+      }, [myBrandBtnClick]);
+    
     const displayPiece = pieces.map((p) => {
         return <PieceCard 
                     key={p.id}
@@ -38,7 +39,6 @@ function BrandCard({
   return (
     <div className="card-container">
         <div>
-    
         <div className="cards">
             <h2 className="card-name">{name}</h2>
             <h4 className="card-name">{headQuarters}</h4>
@@ -46,8 +46,8 @@ function BrandCard({
             <h3 className="card-description-header">About this brand:</h3>
             <p className="card-description">{description}</p>
             {showPieceClick ? 
-                    (<div><button className="btn" onClick={() => (setShowPieces(!showPieces))}>Show My Pieces</button> </div> ) : (null)}
-                {showPieces ? (displayPiece) : (null)}
+                    (<div><button id="show-pieces-btn" className="btn" onClick={() => (setPiecesShow(!piecesShow))}>Show My Pieces</button> </div> ) : (null)}
+                {piecesShow ? (displayPiece) : (null)}
         </div>
         </div>
     </div>

@@ -64,11 +64,7 @@ function PieceCard({
 
             {displayDelete ? ( <button id="delete-btn" className="btn" onClick={handleDelete}>
                 Remove
-            {/* <FaTimesCircle  size="1.3em"  /> */}
             </button>) : (null)}
-            {/* <button onClick={handleDelete}>
-            <FaTimesCircle />
-            </button> */}
         </div>
     </div>
   )

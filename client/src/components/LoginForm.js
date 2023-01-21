@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import {useHistory} from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { userAdded } from "../redux/userSlice";
 import '../App.css';
 
 
@@ -9,10 +11,13 @@ function LoginForm({setUser}){
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const history = useHistory();
+    const dispatch = useDispatch()
 
     function handleLogin(e) {
+
         e.preventDefault();
         setIsLoading(true);
+
         fetch("/login", {
           method: "POST",
           headers: {
@@ -22,10 +27,15 @@ function LoginForm({setUser}){
         }).then((r) => {
           setIsLoading(false);
           if (r.ok) {
-            history.push('/')
-            r.json().then((user) => setUser(user));
+            history.push('/instructions')
+            r.json().then((user) => {
+            //  return setUser(user)
+            // console.log(user)
+                dispatch(userAdded(user))
+                setUser(user)
+            })
           } else {
-            r.json().then((err) => setErrors(err.errors));
+            r.json().then((err) => console.log(err.errors));
           }
         });
 

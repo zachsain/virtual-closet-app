@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import {useHistory} from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { userLogout } from "../redux/userSlice";
 import '../App.css';
 
 function Logout ({ user, setUser }) {
     const history = useHistory()
+    const dispatch = useDispatch()
 
     function handleClick(e){    
         e.preventDefault()
@@ -13,6 +16,7 @@ function Logout ({ user, setUser }) {
             if (r.ok) {
               console.log("good bye")
               setUser(null)
+              dispatch(userLogout(null))
             //   history.push('/')
             }
           });

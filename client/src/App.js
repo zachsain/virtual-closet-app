@@ -22,27 +22,28 @@ function App() {
   const dispatch = useDispatch();
   const [test, setTest] = useState("")
   const [loaded, setLoaded] = useState(false)
-  const userFetch = useSelector((state) => state.user.entities);
+  const userData = useSelector((state) => state.user.entities);
 
   let login;
 
-  if (userFetch.errors){
-    console.log("no")
-    login = null
-  } else {
-    console.log("ok")
-    login = true
+  console.log(userData)
+
+  // if (userFetch.errors){
+  //   console.log("no")
+  //   login = null
+  // } else {
+  //   console.log("ok")
+  //   login = true
    
-  }
+  // }
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch]); 
 
   useEffect(() => {
     dispatch(fetchBrands());
     setLoaded(true)
-  }, [dispatch]);
-
-
-  useEffect(() => {
-    dispatch(fetchUser());
   }, [dispatch]);
 
   useEffect(() => {
@@ -91,7 +92,7 @@ function App() {
        <Route  exact path="/styles/:id">
         <DisplaySingleStyle />
        </Route>
-       <Route exact path="/home">
+       <Route exact path="/instructions">
           <Home />
        </Route> 
        <Route exact path="/">

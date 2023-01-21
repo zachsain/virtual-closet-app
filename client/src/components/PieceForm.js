@@ -106,7 +106,7 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
             type='text'
             className="form-inputs"
             autoComplete="off"
-            placeholder="URL..."
+            placeholder="Image URL..."
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
           ></input>

@@ -2,7 +2,13 @@ import React from 'react'
 import StylesCard from './StylesCard'
 import '../App.css'
 
-function DisplayStyles({styles, showPieceClick, showPieces, setShowPieces}) {
+function DisplayStyles({
+          styles, 
+          showPieceClick, 
+          showPieces, 
+          setShowPieces,
+          myStyleBtnClick
+      }) {
 
    let styleCard = styles.map((s) => {
     return <StylesCard 
@@ -16,6 +22,7 @@ function DisplayStyles({styles, showPieceClick, showPieces, setShowPieces}) {
             showPieceClick={showPieceClick}
             setShowPieces={setShowPieces}
             showPieces={showPieces}
+            myStyleBtnClick={myStyleBtnClick} 
             />
    })
 

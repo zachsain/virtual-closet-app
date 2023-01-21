@@ -2,12 +2,10 @@ import React from 'react'
 import BrandCard from './BrandCard'
 import '../App.css'
 
-function DisplayBrands({brands, showPieceClick, setShowPieces, showPieces}) {
+function DisplayBrands({brands, showPieceClick, setShowPieces, showPieces, myBrandBtnClick}) {
 
     let brandCard = brands.map((b) => {
      return   <BrandCard
-                setShowPieces={setShowPieces} 
-                showPieces={showPieces} 
                 id={b.id}
                 key={b.id}
                 name={b.name}
@@ -15,6 +13,7 @@ function DisplayBrands({brands, showPieceClick, setShowPieces, showPieces}) {
                 logo={b.logo_url}
                 description={b.description}
                 showPieceClick={showPieceClick}
+                myBrandBtnClick={myBrandBtnClick}
             />
     })
 

@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchUser = createAsyncThunk("user/fetchUser", () => {
-    // return a Promise containing the data we want
+
     return fetch("/me")
       .then((response) => response.json())
       .then((data) => (console.log(data), data));
   });
-  
 
 // Reducers
 
@@ -23,11 +22,14 @@ const userSlice = createSlice({
     },
     reducers: {
       userAdded(state, action) {
-        state.entities.push(action.payload);
+        state.entities = action.payload
       },
       userUpdated(state, action) {
         const user = state.entities.find((u) => u.id === action.payload.id);
         user.url = action.payload.url;
+      },
+      userLogout(state, action) {
+        state.entities = action.payload
       },
       pieceUpdated(state, action){
         // console.log(action.payload.id)
@@ -53,7 +55,7 @@ const userSlice = createSlice({
     },
 });
   
-export const { userAdded, pieceUpdated, pieceAdded, pieceDeleted, userUpdated} = userSlice.actions;
+export const { userAdded, pieceUpdated, pieceAdded, pieceDeleted, userUpdated, userLogout} = userSlice.actions;
 
   
 export default userSlice.reducer;

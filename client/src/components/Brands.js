@@ -19,15 +19,9 @@ function Brands({}) {
         setShowBrandForm(!showBrandForm)
     }
 
-    // useEffect(() => {
-    //     dispatch(fetchBrands());
-    //   }, [dispatch]);
-    
-
     const brands = useSelector((state) => state.brands.entities);
     const myBrands = useSelector((state) => state.user.entities)
-    console.log(brands)
-
+    
     function handleMyBrandClick(){
         setShowPieces(false)
         setShowPieceClick(!showPieceClick)
@@ -39,13 +33,15 @@ function Brands({}) {
         <h1 className="pages-header"> BRANDS </h1>
         <div className="add-brand-btn">
             <button  id="add-styles-btn" onClick={handleBrandClick} data-inline="true"  className="btn">Add New Brand</button>
-            <button id="my-styles-btn" onClick={handleMyBrandClick} data-inline="true"  className="btn">See My Brands</button>
+            {myBrandBtnClick ? ( <button id="my-styles-btn" data-inline="true" onClick={handleMyBrandClick} className="btn">All Brands</button>) 
+            : (<button id="my-styles-btn" data-inline="true" onClick={handleMyBrandClick} className="btn">See My Brands</button>)}
+            {/* <button id="my-styles-btn" onClick={handleMyBrandClick} data-inline="true"  className="btn">See My Brands</button> */}
         </div>
         {showBrandForm ? 
             (<BrandForm showBrandForm={showBrandForm} setShowBrandForm={setShowBrandForm}/>) 
             : (null)}
         {myBrandBtnClick ? 
-            ( <DisplayBrands setShowPieces={setShowPieces} showPieces={showPieces} brands={myBrands.brands} showPieceClick={showPieceClick}/>) 
+            ( <DisplayBrands myBrandBtnClick={myBrandBtnClick} brands={myBrands.brands} showPieceClick={showPieceClick}/>) 
             : 
             ( <DisplayBrands  brands={brands} showPieceClick={showPieceClick}/>)}
         {/* <div>

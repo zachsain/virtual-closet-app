@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {useHistory} from "react-router-dom";
+import { userAdded } from "../redux/userSlice";
+import { useSelector, useDispatch } from "react-redux";
 import '../App.css';
 
 
@@ -12,7 +14,8 @@ function SignUpForm({setUser}){
     // const [errors, setErrors] = useState([]);
     // const [isLoading, setIsLoading] = useState(false);
     const history = useHistory();
-
+    const dispatch = useDispatch()
+    
         function handleSubmit(e){
             e.preventDefault();
             const formData = new FormData();
@@ -25,7 +28,7 @@ function SignUpForm({setUser}){
               body: formData
             })
             .then(r => r.json())
-            .then(user => (setUser(user), history.push('/')))
+            .then(user => (setUser(user), dispatch(userAdded(user)), history.push('/instructions')))
         }
 
     function onImageChange(e){
