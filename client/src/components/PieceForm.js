@@ -5,10 +5,10 @@ import { fetchStyles } from "../redux/stylesSlice";
 import {brandAdded} from "../redux/brandsSlice";
 import BrandForm from './BrandForm';
 import StyleForm from './StyleForm';
-// import {pieceAdded} from "../redux/pieceSlice";
 import {pieceAdded} from "../redux/userSlice";
 import {renderBrand} from "../redux/userSlice";
 import { BsPlusCircle } from "react-icons/bs";
+import DisplayErrors from './DisplayErrors';
 import '../App.css'
 
 function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
@@ -28,6 +28,8 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
     const [brandId, setBrandId] = useState(0)
     const [styleClick, setStyleClick] = useState(false)
     const [brandClick, setBrandClick] = useState(false)
+    const [errors, setErrors] = useState([]);
+    const [showErrors, setShowErrors] = useState(false)
     const dispatch = useDispatch()
     const brands = useSelector((state) => state.brands.entities);
     const styles = useSelector((state) => state.styles.entities);
@@ -49,8 +51,7 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
       }
 
       function handleSubmit(e){
-        e.preventDefault() 
-        setAddPieceBtnClick(!addPieceBtnClick)        
+        e.preventDefault()      
         fetch("/pieces", {
             method: "POST",
             headers: {
@@ -69,14 +70,19 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
           }).then((r) => {
             if (r.ok) {
               r.json().then((p) =>{
+                setAddPieceBtnClick(!addPieceBtnClick)   
                 dispatch(pieceAdded(p))
               })
             } else {
-              r.json().then((err) => console.log(err.errors));
+              r.json().then((err) => setErrors(err.errors), setShowErrors(true), setAddPieceBtnClick(true));
             }
           });
         
       }
+
+      let errorMsg = errors.map((e) => {
+        return <DisplayErrors key={e[0]} error={e} />
+      })
 
   return (
     <div className="form-container">
@@ -162,7 +168,7 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
                 </select>   
         </div> 
         <br/>
-
+        {showErrors ? (errorMsg) : (null)}
         <div className="add-style-btn">
           <button className="btn" type='submit'>Add Piece</button>
           </div>

@@ -23,7 +23,7 @@ function Styles() {
     <div className="styles-page-container">
         <h3 className="pages-header"> STYLES </h3>
         <div className="styles-btn">
-            <button id="add-styles-btn" data-inline="true" onClick={(e) => setAddStyleBtnClick(!addStyleBtnClick)} className="btn">Add New Style</button>
+            <button id="add-styles-btn" data-inline="true" onClick={(e) => setAddStyleBtnClick(!addStyleBtnClick)} className="btn">Add Styles</button>
 
             {myStyleBtnClick ? ( <button id="my-styles-btn" data-inline="true" onClick={handeMyStyleClick} className="btn">All Styles</button>) 
             : (<button id="my-styles-btn" data-inline="true" onClick={handeMyStyleClick} className="btn">See My Styles</button>)}

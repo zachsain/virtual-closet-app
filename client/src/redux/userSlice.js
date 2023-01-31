@@ -4,7 +4,7 @@ export const fetchUser = createAsyncThunk("user/fetchUser", () => {
 
     return fetch("/me")
       .then((response) => response.json())
-      .then((data) => (console.log(data), data));
+      .then((data) => (data));
   });
 
 // Reducers

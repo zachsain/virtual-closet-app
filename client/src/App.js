@@ -26,7 +26,7 @@ function App() {
 
   let login;
 
-  console.log(userData)
+  // console.log(userData)
 
   // if (userFetch.errors){
   //   console.log("no")
@@ -51,7 +51,6 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));

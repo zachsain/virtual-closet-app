@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {brandAdded} from "../redux/brandsSlice";
 import { useSelector, useDispatch } from "react-redux";
+import DisplayErrors from './DisplayErrors';
 import '../App.css'
 
 function BrandForm({showBrandForm, setShowBrandForm }) {
@@ -8,12 +9,14 @@ function BrandForm({showBrandForm, setShowBrandForm }) {
     const [headQuarters, setHeadQuarters] = useState("")
     const [logoUrl, setLogoUrl] = useState("")
     const [description, setDescription] = useState("")
+    const [errors, setErrors] = useState([]);
+    const [showErrors, setShowErrors] = useState(false)
     const dispatch = useDispatch();
 
     function handleSubmit(e){
         
         e.preventDefault() 
-        setShowBrandForm(!showBrandForm)
+        
         
         fetch("/brands", {
             method: "POST",
@@ -29,14 +32,20 @@ function BrandForm({showBrandForm, setShowBrandForm }) {
           }).then((r) => {
             if (r.ok) {
               r.json().then((b) =>{
+                setShowBrandForm(!showBrandForm)
                 dispatch(brandAdded(b))
                 
               })
             } else {
-              r.json().then((err) => console.log(err.errors));
+              r.json().then((err) => setErrors(err.errors), setShowErrors(true), setShowBrandForm(true) );
             }
           });
     }
+
+    let errorMsg = errors.map((e) => {
+      return <DisplayErrors key={e[0]} error={e} />
+    })
+
 
   return (
     <div className="brand-form-container">
@@ -79,6 +88,7 @@ function BrandForm({showBrandForm, setShowBrandForm }) {
             onChange={(e) => setDescription(e.target.value)}
            ></textarea>
           <br/>
+          {showErrors ? (errorMsg) : (null)}
           <div className="add-brand-btn">
           <button className="btn" type='submit'>Add Brand</button>
           </div>

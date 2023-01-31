@@ -9,6 +9,7 @@ import StyleForm from './StyleForm';
 import {pieceUpdated} from "../redux/userSlice";
 import { BsPlusCircle } from "react-icons/bs";
 import {pieceDeleted} from "../redux/pieceSlice";
+import DisplayErrors from './DisplayErrors';
 import '../App.css'
 
 
@@ -31,6 +32,8 @@ function PieceEditForm({
     const [size, setSize] = useState("")
     const [image, setImage] = useState(null)
     const [imageUrl, setImageUrl] = useState("")
+    const [errors, setErrors] = useState([]);
+    const [showErrors, setShowErrors] = useState(false)
     const dispatch = useDispatch()
   
       function onImageChange(e){
@@ -40,7 +43,7 @@ function PieceEditForm({
 
       function handleSubmit(e){
         e.preventDefault() 
-        setEditClick(!editClick)
+        
         fetch(`/pieces/${id}`, {
             method: "PATCH",
             headers: {
@@ -60,15 +63,20 @@ function PieceEditForm({
           }).then((r) => {
             if (r.ok) {
               r.json().then((p) =>{
-                console.log(p)  
+                setEditClick(!editClick) 
                 dispatch(pieceUpdated(p))
               })
             } else {
-              r.json().then((err) => console.log(err.errors));
+              r.json().then((err) => setErrors(err.errors), setShowErrors(true), setEditClick(true));
             }
           });
         
       }
+
+  
+    let errorMsg = errors.map((e) => {
+      return <DisplayErrors key={e[0]} error={e} />
+    })
 
   return (
     <div className= "form-container">
@@ -143,6 +151,7 @@ function PieceEditForm({
         </button> */}
 
         <br/>
+        {showErrors ? (errorMsg) : (null)}
         <div className="add-piece-btn">
           <button className="btn" type='submit'>Add Piece</button>
         </div>

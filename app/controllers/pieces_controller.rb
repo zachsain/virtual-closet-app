@@ -1,4 +1,7 @@
 class PiecesController < ApplicationController
+    before_action :authorize, only: [:show, :create, :destroy, :index]
+    rescue_from ActiveRecord::RecordInvalid, with: :handle_invalid_data
+    rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
     def index
         pieces = Piece.all
@@ -7,7 +10,7 @@ class PiecesController < ApplicationController
 
     def create 
         user = User.find(session[:user_id])
-        piece = user.piece.create!(piece_params)
+        piece = user.pieces.create!(piece_params)
         render json: piece, status: :created
     end 
 
