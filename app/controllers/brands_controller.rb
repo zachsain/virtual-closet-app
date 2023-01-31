@@ -1,4 +1,7 @@
 class BrandsController < ApplicationController
+    before_action :authorize, only: [:show, :create]
+    rescue_from ActiveRecord::RecordInvalid, with: :handle_invalid_data
+    rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
     def index
         brands = Brand.all
@@ -10,11 +13,11 @@ class BrandsController < ApplicationController
         render json: brand
     end 
     
-    def destroy 
-        brand = Brand.find(params[:id])
-        brand.destroy  
-        head :no_content
-    end
+    # def destroy 
+    #     brand = Brand.find(params[:id])
+    #     brand.destroy  
+    #     head :no_content
+    # end
 
     private 
 

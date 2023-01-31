@@ -2,22 +2,21 @@ import React, {useState} from 'react'
 import {useHistory} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { userAdded } from "../redux/userSlice";
+import DisplayErrors from './DisplayErrors';
 import '../App.css';
 
 
 function LoginForm({setUser}){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch()
 
     function handleLogin(e) {
-
         e.preventDefault();
-        setIsLoading(true);
-
         fetch("/login", {
           method: "POST",
           headers: {
@@ -25,17 +24,14 @@ function LoginForm({setUser}){
           },
           body: JSON.stringify({ username, password }),
         }).then((r) => {
-          setIsLoading(false);
           if (r.ok) {
             history.push('/instructions')
             r.json().then((user) => {
-            //  return setUser(user)
-            // console.log(user)
                 dispatch(userAdded(user))
                 setUser(user)
             })
           } else {
-            r.json().then((err) => console.log(err.errors));
+            r.json().then((err) => setErrors(err.errors), setShowErrors(true));
           }
         });
 
@@ -65,11 +61,11 @@ return (
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input><br />
+          {showErrors ? (<div><DisplayErrors error={errors} /></div>) : (null)}  
           <div className="login-btn">
           <button className="btn" type='submit'>Login
           </button>
           </div>
-          {isLoading ? (<h1>Loading...</h1>) : (null)}
         </form>
     </div>
   </div>

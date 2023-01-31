@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useHistory} from "react-router-dom";
 import { userAdded } from "../redux/userSlice";
 import { useSelector, useDispatch } from "react-redux";
+import DisplayErrors from './DisplayErrors';
 import '../App.css';
 
 
@@ -11,31 +12,49 @@ function SignUpForm({setUser}){
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
     const [image, setImage] = useState(null)
-    // const [errors, setErrors] = useState([]);
-    // const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
     const history = useHistory();
     const dispatch = useDispatch()
     
         function handleSubmit(e){
             e.preventDefault();
-            const formData = new FormData();
-            formData.append('username', username);
-            formData.append('email', email);
-            formData.append('password', password);
-            formData.append('featured_image', image);
             fetch('/signup', {
-              method: 'POST',
-              body: formData
-            })
-            .then(r => r.json())
-            .then(user => (setUser(user), dispatch(userAdded(user)), history.push('/instructions')))
+              method: "POST",
+              headers: {
+               "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                username,
+                password,
+                email,
+              }),
+            }).then((r) => {
+              if (r.ok) {
+                r.json().then((user) => {
+                  dispatch(userAdded(user))
+                  setUser(user)
+                  history.push('/instructions')
+                })
+              } else {
+                r.json().then((err) => setErrors(err.errors), setShowErrors(true));
+              }
+            });
         }
+
+        // dispatch(userAdded(user))
+        // setUser(user)
+        // history.push('/instructions')
 
     function onImageChange(e){
       console.log(e.target.files[0])
         setImage(e.target.files[0]);
     }
-  
+    
+    // let errorMsg = errors.map((e) => {
+    //   return <DisplayErrors key={e[0]} error={e} />
+    // })
+    
     return (
         <div>
         <div className="form-container">
@@ -77,10 +96,10 @@ function SignUpForm({setUser}){
             ></input>
             <br />
 
-            <input className="form-inputs" type="file" accept="image/*" multiple={false} onChange={onImageChange} />
+            {/* <input className="form-inputs" type="file" accept="image/*" multiple={false} onChange={onImageChange} /> */}
             
             <br />
-
+            {showErrors ? (<div><DisplayErrors error={errors} /></div>) : (null)}
             <div className="add-style-btn">
             <button id="signup-btn" className="btn" type="submit">Sign up</button>
             </div>

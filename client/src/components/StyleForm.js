@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {styleAdded} from "../redux/stylesSlice";
+import DisplayErrors from './DisplayErrors';
 import '../App.css'
 
 
@@ -10,13 +11,13 @@ function StyleForm({addStyleBtnClick, setAddStyleBtnClick }) {
     const [urlPhoto, setUrlPhoto] = useState("")
     const [description, setDescription] = useState("")
     const [category, setCategory] = useState("")
+    const [errors, setErrors] = useState([]);
+    const [showErrors, setShowErrors] = useState(false)
     const dispatch = useDispatch()
 
     function handleSubmit(e){
         
         e.preventDefault() 
-        setAddStyleBtnClick(!addStyleBtnClick)
-        
         fetch("/styles", {
             method: "POST",
             headers: {
@@ -31,14 +32,19 @@ function StyleForm({addStyleBtnClick, setAddStyleBtnClick }) {
           }).then((r) => {
             if (r.ok) {
               r.json().then((s) =>{
+                setAddStyleBtnClick(!addStyleBtnClick)
                 dispatch(styleAdded(s))
                 
               })
             } else {
-              r.json().then((err) => console.log(err.errors));
+              r.json().then((err) => setErrors(err.errors), setAddStyleBtnClick(true), setShowErrors(true));
             }
           });
     }
+
+    let errorMsg = errors.map((e) => {
+      return <DisplayErrors key={e[0]} error={e} />
+    })
 
   return (
     <div>
@@ -88,6 +94,7 @@ function StyleForm({addStyleBtnClick, setAddStyleBtnClick }) {
             
         <br/>
           <div className="add-style-btn">
+          {showErrors ? (errorMsg) : (null)}
           <button className="btn" type='submit'>Add Style</button>
           </div>
         </form>

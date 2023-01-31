@@ -48,7 +48,6 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
         setImage(e.target.files[0])
       }
 
-
       function handleSubmit(e){
         e.preventDefault() 
         setAddPieceBtnClick(!addPieceBtnClick)        
@@ -66,7 +65,6 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
                 'notes' :  description,
                 'style_id' : styleId,
                 'brand_id' : brandId,
-                'user_id' : user.id
             }),
           }).then((r) => {
             if (r.ok) {
