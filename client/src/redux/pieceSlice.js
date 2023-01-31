@@ -9,7 +9,6 @@ export const fetchPieces = createAsyncThunk("user/fetchStyles", () => {
   
 
 // Reducers
-
 const initialState = {
     entities: [], 
     status: "idle", 
@@ -28,11 +27,7 @@ const pieceSlice = createSlice({
       pieceUpdated(state, action) {
         const piece = state.entities.find((piece) => piece.id === action.payload.id);
         console.log(piece)
-        // piece = action.payload;
       },
-    //   pieceDeleted(state, action) {
-    //     const piece = state.entities.filter((p) => p.id !== action.payload);
-    //   },
     },
     extraReducers: {
       [fetchPieces.pending](state) {

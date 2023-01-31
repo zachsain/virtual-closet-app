@@ -18,8 +18,8 @@ class UsersController < ApplicationController
         render json: current_user
     end 
   
-
     private
+
     def user_params
         params.permit(:username, :password, :email, :featured_image)
     end

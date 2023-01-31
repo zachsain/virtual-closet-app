@@ -1,13 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { fetchBrands } from "../redux/brandsSlice";
-import { fetchStyles } from "../redux/stylesSlice";
-import {brandAdded} from "../redux/brandsSlice";
-import BrandForm from './BrandForm';
-import StyleForm from './StyleForm';
+// import { fetchBrands } from "../redux/brandsSlice";
+// import { fetchStyles } from "../redux/stylesSlice";
+// import {brandAdded} from "../redux/brandsSlice";
+// import BrandForm from './BrandForm';
+// import StyleForm from './StyleForm';
 import {pieceAdded} from "../redux/userSlice";
-import {renderBrand} from "../redux/userSlice";
-import { BsPlusCircle } from "react-icons/bs";
 import DisplayErrors from './DisplayErrors';
 import '../App.css'
 

@@ -1,10 +1,11 @@
 class PiecesController < ApplicationController
-    before_action :authorize, only: [:show, :create, :destroy, :index]
+    before_action :authorize, only: [:show, :update, :create, :destroy, :index]
     rescue_from ActiveRecord::RecordInvalid, with: :handle_invalid_data
     rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
     def index
-        pieces = Piece.all
+        user = User.find(session[:user_id])
+        pieces = user.pieces
         render json: pieces
     end
 
@@ -26,6 +27,7 @@ class PiecesController < ApplicationController
         piece.destroy
         head :no_content
     end
+
     private 
 
     def piece_params 

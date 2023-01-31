@@ -44,11 +44,6 @@ function Brands({}) {
             ( <DisplayBrands myBrandBtnClick={myBrandBtnClick} brands={myBrands.brands} showPieceClick={showPieceClick}/>) 
             : 
             ( <DisplayBrands  brands={brands} showPieceClick={showPieceClick}/>)}
-        {/* <div>
-            <DisplayBrands brands={brands}/>
-        </div> */}
-
-
     </div>
   )
 }
