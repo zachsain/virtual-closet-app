@@ -15,7 +15,7 @@ Phase 5 Project for Flatiron School: React/Rails API - Full Stack Application. T
 
 ## General Information
 
-Activity Journal was created for Flatiron Software Enineering program for phase-4, focused on React frontend and Rails backend. Authentication requires users to login and protects data access.
+Virtual Closet was created for Flatiron Software Enineering capstone project, focused on React frontend and Rails backend, and Redux for state management.
 
 ## GitHub Repo
 
