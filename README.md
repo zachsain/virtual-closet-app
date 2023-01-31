@@ -242,4 +242,5 @@ Frontend:
 
 - Allow users to add new pieces from the brands and styles pages. 
 - Add new routes for looks books, wishlist, and overall just making it a more useful tool for people who want to manage their clothes, styles and brands.  
+- Allow users to track how much they are spending 
 

@@ -17,30 +17,25 @@ function PieceEditForm({
             id, 
             styleId, 
             brandId,
-             userId,
+            userId,
             pieceName,
             pieceDescription,
+            pieceImage,
             piecePrice,
             pieceSize,
             setEditClick,
             editClick
             }) {
 
-    const [name, setName] = useState("")
-    const [price, setPrice] = useState("")
-    const [description, setDescription] = useState("")
-    const [size, setSize] = useState("")
-    const [image, setImage] = useState(null)
-    const [imageUrl, setImageUrl] = useState("")
+    const [name, setName] = useState(pieceName)
+    const [price, setPrice] = useState(piecePrice)
+    const [description, setDescription] = useState(pieceDescription)
+    const [size, setSize] = useState(pieceSize)
+    const [imageUrl, setImageUrl] = useState(pieceImage)
     const [errors, setErrors] = useState([]);
     const [showErrors, setShowErrors] = useState(false)
     const dispatch = useDispatch()
   
-      function onImageChange(e){
-        console.log(e.target.files[0])
-        setImage(e.target.files[0])
-      }
-
       function handleSubmit(e){
         e.preventDefault() 
         
@@ -53,7 +48,6 @@ function PieceEditForm({
                 'name' : name,
                 'price' : price,
                 'size' : size,
-                'featured_image': image,
                 'image_url' : imageUrl,
                 'notes' :  description,
                 'style_id' : styleId,
@@ -82,7 +76,7 @@ function PieceEditForm({
     <div className= "form-container">
         <form className="forms" onSubmit={handleSubmit}>
           <br />
-          <label></label>
+          <label className="edit-form-label">Name:</label>
           <input
             type='text'
             className="form-inputs"
@@ -92,11 +86,8 @@ function PieceEditForm({
             onChange={(e) => setName(e.target.value)}
           ></input>
           <br/>
-          {/* <label> Upload Phtoto:
-            <input type="file" accept="image/*" multiple={false} onChange={onImageChange} />
-          </label> */}
-          {/* <br/> */}
-          <label className='form-label'></label>
+
+          <label className="edit-form-label">Image Url:</label>
           <input
             type='text'
             className="form-inputs"
@@ -106,7 +97,7 @@ function PieceEditForm({
             onChange={(e) => setImageUrl(e.target.value)}
           ></input>
           <br />
-          <label className='form-label'></label>
+          <label className="edit-form-label">Price</label>
           <input
             type='text'
             className="form-inputs"
@@ -117,7 +108,7 @@ function PieceEditForm({
           ></input>
           <br />
 
-          <label className='form-label'></label>
+          <label className="edit-form-label">Size:</label>
           <input
             type='text'
             className="form-inputs"
@@ -128,7 +119,7 @@ function PieceEditForm({
           ></input>
           <br />
 
-          <label className='form-label'></label>
+          <label className="edit-form-label"></label>
           <textarea
             type='text'
             className="form-inputs"
@@ -137,19 +128,7 @@ function PieceEditForm({
             onChange={(e) => setDescription(e.target.value)}
            ></textarea>
           <br/> 
-          {/* <label className='category-form'>Style:
-                <select onChange={handleStyle}className="selector">
-                    <option></option>
-                    {styles.map((s) => {
-                        return <option key={s.id} value={s.id}>{s.name}</option>
-                     
-                    })}
-                </select>    
-        </label>
-        <button className="add-new-style-piece" onClick={(e) => setStyleClick(!styleClick) }> 
-            <BsPlusCircle/> 
-        </button> */}
-
+        
         <br/>
         {showErrors ? (errorMsg) : (null)}
         <div className="add-piece-btn">
@@ -157,8 +136,6 @@ function PieceEditForm({
         </div>
 
         </form>
-
-        {/* <input type="file" accept="image/*" multiple={false} onChange={onImageChange} /> */}
     </div>
   )   
 }

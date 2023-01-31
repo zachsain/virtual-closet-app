@@ -65,12 +65,12 @@ function DisplaySinglePiece() {
             pieceDescription={piece.notes}
             piecePrice={piece.price}
             pieceSize={piece.size}
+            pieceImage={piece.image_url}
             id={piece.id}
             setEditClick={setEditClick}
             editClick={editClick}
 
             />) : (null)}
-
     </div>
     <div>
         <h3 className="single-piece-header">Made By:</h3>

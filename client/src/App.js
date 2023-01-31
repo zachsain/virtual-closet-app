@@ -24,18 +24,6 @@ function App() {
   const [loaded, setLoaded] = useState(false)
   const userData = useSelector((state) => state.user.entities);
 
-  let login;
-
-  // console.log(userData)
-
-  // if (userFetch.errors){
-  //   console.log("no")
-  //   login = null
-  // } else {
-  //   console.log("ok")
-  //   login = true
-   
-  // }
 
   useEffect(() => {
     dispatch(fetchUser());
@@ -72,7 +60,6 @@ function App() {
     </div>)
 
   return (
-    // <BrowserRouter>
     <div className="App">
     <NavBar user={user} setUser={setUser} />
      <Switch>
@@ -99,7 +86,6 @@ function App() {
        </Route>  
      </Switch>
    </div>
-    // </BrowserRouter>
   );
 }
 
