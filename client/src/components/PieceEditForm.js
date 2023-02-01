@@ -6,7 +6,9 @@ import {brandAdded} from "../redux/brandsSlice";
 import BrandForm from './BrandForm';
 import StyleForm from './StyleForm';
 // import {pieceAdded} from "../redux/pieceSlice";
+
 import {pieceUpdated} from "../redux/userSlice";
+
 import { BsPlusCircle } from "react-icons/bs";
 import {pieceDeleted} from "../redux/pieceSlice";
 import DisplayErrors from './DisplayErrors';

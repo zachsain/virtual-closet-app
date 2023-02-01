@@ -11,10 +11,6 @@ function DisplaySingleStyle() {
     const styles = useSelector((state) => state.styles.entities)
     const user = useSelector((state) => state.user.entities)
 
-    // console.log(style)
-
-    // const style = styles.filter((s) => s.id === params.id)
-
     const style = styles.find((s) => s.id == params.id)
     console.log(style)
 

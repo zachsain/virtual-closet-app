@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchPieces = createAsyncThunk("user/fetchStyles", () => {
-    // return a Promise containing the data we want
     return fetch("/pieces")
       .then((response) => response.json())
       .then((data) => (data));
@@ -26,7 +25,6 @@ const pieceSlice = createSlice({
       },
       pieceUpdated(state, action) {
         const piece = state.entities.find((piece) => piece.id === action.payload.id);
-        console.log(piece)
       },
     },
     extraReducers: {

@@ -40,8 +40,5 @@ const stylesSlice = createSlice({
       },
     },
 });
-  
-export const { styleAdded, styleUpdated } = stylesSlice.actions;
-
-  
+export const { styleAdded, styleUpdated } = stylesSlice.actions; 
 export default stylesSlice.reducer;

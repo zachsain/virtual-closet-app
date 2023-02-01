@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {styleAdded} from "../redux/stylesSlice";
 import DisplayErrors from './DisplayErrors';
 import '../App.css'
@@ -13,6 +13,7 @@ function StyleForm({addStyleBtnClick, setAddStyleBtnClick }) {
     const [category, setCategory] = useState("")
     const [errors, setErrors] = useState([]);
     const [showErrors, setShowErrors] = useState(false)
+    
     const dispatch = useDispatch()
 
     function handleSubmit(e){
@@ -29,6 +30,7 @@ function StyleForm({addStyleBtnClick, setAddStyleBtnClick }) {
                 'description' :  description,
                 'category' : category
             }),
+
           }).then((r) => {
             if (r.ok) {
               r.json().then((s) =>{
