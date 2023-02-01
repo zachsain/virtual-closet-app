@@ -218,7 +218,7 @@ It should be possible to shutdown the server using [CTRL-C]. If that fails, foll
 
 ## Usage
 
-FIX NUMBERS *********
+
 
 1. [`Login`] with your username & password. If this is your first time, create a user profile [`Sign Up`].
 2. [`Landing Page`] once logged in or signed up you'll arrive on our landing page for instructions on how to use the app. 
