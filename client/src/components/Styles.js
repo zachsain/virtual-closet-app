@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import DisplayStyles from './DisplayStyles'
 import StyleForm from './StyleForm';
 import { useSelector, useDispatch } from "react-redux";
+import { fetchUser } from "../redux/userSlice";
 import '../App.css'
 
 function Styles() {
@@ -9,6 +10,7 @@ function Styles() {
   const [myStyleBtnClick, setMyStyleBtnClick] = useState(false)
   const [showPieceClick, setShowPieceClick] = useState(false)
   const [showPieces, setShowPieces] = useState(false)
+  const dispatch = useDispatch();
  
   const styles = useSelector((state) => state.styles.entities); 
   const myStyles = useSelector((state) => state.user.entities)
@@ -18,6 +20,10 @@ function Styles() {
     setShowPieceClick(!showPieceClick)
     setMyStyleBtnClick(!myStyleBtnClick)
   }
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [myStyleBtnClick]); 
 
   return (
     <div className="styles-page-container">

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import '../App.css';
 import PieceCard from './PieceCard';
 import { useSelector, useDispatch } from "react-redux";
+import { fetchUser } from "../redux/userSlice";
 import '../App.css'
 
 function BrandCard({
@@ -17,6 +18,11 @@ function BrandCard({
     const user = useSelector((state) => state.user.entities)
     const pieces = user.pieces.filter((p) => p.brand_id === id)
     const [piecesShow, setPiecesShow] = useState(false)
+    const dispatch = useDispatch()
+    
+    useEffect(() => {
+      dispatch(fetchUser());
+    }, [dispatch]); 
 
     useEffect(() => {
         setPiecesShow(false)

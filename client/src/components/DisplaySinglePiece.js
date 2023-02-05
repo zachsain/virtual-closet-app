@@ -1,4 +1,4 @@
-import React, {useState}from 'react'
+import React, {useState, useEffect}from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { FaTimesCircle } from "react-icons/fa";
 import {useParams} from 'react-router-dom';
@@ -8,6 +8,7 @@ import BrandCard from './BrandCard';
 import StylesCard from './StylesCard';
 import { FiEdit } from "react-icons/fi";
 import PieceEditForm from './PieceEditForm';
+import { fetchUser } from "../redux/userSlice";
 import '../App.css'
 
 function DisplaySinglePiece() {
@@ -24,20 +25,24 @@ function DisplaySinglePiece() {
     let filteredStyle = styles.find(s => s.id == piece.style_id ) 
     let style = user.styles.find(s => s.id == piece.style_id)
 
+    useEffect(() => {
+      dispatch(fetchUser());
+    }, [dispatch]);
+    
 
-    function handleDelete(e){ 
-        console.log(params.id)
-        fetch(`/pieces/${params.id}`, {
-            method: "DELETE",
-          })
-            .then((r) => {
-              if (r.ok) {
-                history.push('/')
-                dispatch(pieceDeleted(params.id))
-              }
-            })
-            .catch((err) => console.log(err))
-    }
+    // function handleDelete(e){ 
+    //     console.log(params.id)
+    //     fetch(`/pieces/${params.id}`, {
+    //         method: "DELETE",
+    //       })
+    //         .then((r) => {
+    //           if (r.ok) {
+    //             history.push('/')
+    //             dispatch(pieceDeleted(params.id))
+    //           }
+    //         })
+    //         .catch((err) => console.log(err))
+    // }
 
   return (
     <div className="single-piece-container">
@@ -49,10 +54,10 @@ function DisplaySinglePiece() {
         <h3 className="card-description-header">About this piece:</h3>
         <p className="card-description">{piece.notes}</p>
         {/* {loaded ? (<div><h4>Brand: {brand.name}</h4></div>) : (null)} */}
-        <br/>
+        {/* <br/>
         <button  id="delete-btn" className="btn" onClick={handleDelete}>
             Remove
-        </button>
+        </button> */}
         <br/>
         <button className="btn" id="edit-btn" onClick={() => setEditClick(!editClick)}>
             <FiEdit size="1.7em" id="edit-btn-icon"/>

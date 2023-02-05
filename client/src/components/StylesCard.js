@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
+import { fetchUser } from "../redux/userSlice";
 import PieceCard from './PieceCard';
 import '../App.css';
 
@@ -18,7 +19,13 @@ function StylesCard({
    const user = useSelector((state) => state.user.entities)
    const pieces = user.pieces.filter((s) => s.style_id === id)
    const [piecesShow, setPiecesShow] = useState(false)
-   
+   const dispatch = useDispatch()
+
+   useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch]); 
+
+
    useEffect(() => {
       setPiecesShow(false)
     }, [myStyleBtnClick]);

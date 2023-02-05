@@ -25,8 +25,10 @@ function App() {
   const userData = useSelector((state) => state.user.entities);
 
 
+
   useEffect(() => {
     dispatch(fetchUser());
+    setLoaded(true)
   }, [dispatch]); 
 
   useEffect(() => {
@@ -45,7 +47,7 @@ function App() {
       }
     });
   } , []);
-   
+
 
   if (!user) return (
     <div style={{
@@ -56,7 +58,7 @@ function App() {
         minHeight: '100vh',
         backgroundSize: 'cover',  
         padding: "100px"}}>
-        <Login setUser={setUser} />
+        <Login setUser={setUser}/>
     </div>)
 
   return (
@@ -64,7 +66,7 @@ function App() {
     <NavBar user={user} setUser={setUser} />
      <Switch>
        <Route exact path="/logout">
-         <Logout user={user} setUser={setUser} />
+         <Logout  setUser={setUser} />
        </Route>
        <Route exact path="/styles">
          <Styles />
@@ -90,3 +92,26 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+// let u;
+
+
+  // if (userData === null) {
+  //   u = null
+  // } else if ('errors' in userData){
+  //   u = null
+  // } else if (userData === undefined){
+  //   u = null
+  // } else {
+  //   u = true
+  // }

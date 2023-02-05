@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PieceCard from './PieceCard';
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBrands } from "../redux/brandsSlice";
+import { fetchUser } from "../redux/userSlice";
 import '../App.css'
 
 function DisplayPiece({loaded}) {
@@ -30,12 +31,36 @@ let closet = user.pieces.map((p) => {
                 displayDelete={displayDelete}
             />
 })
+
   return (
     <div className="display-container">
-        {closet}
+        {closet}    
     </div>
 
   )
 }
 
 export default DisplayPiece;
+
+
+
+
+
+
+
+
+
+
+
+// let u;
+
+// if (loaded === false){
+//   u = []
+//   return(null)
+// } else {
+//   u = user
+// }
+
+// if(!u || !u.pieces){
+//   return <p>Loading...</p>
+// }

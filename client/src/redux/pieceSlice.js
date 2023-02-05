@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchPieces = createAsyncThunk("user/fetchStyles", () => {
     return fetch("/pieces")
       .then((response) => response.json())
-      .then((data) => (data));
+      .then((data) => {
+        return data
+      });
   });
   
 

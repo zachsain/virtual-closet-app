@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchBrands = createAsyncThunk("user/fetchBrands", () => {
     return fetch("/brands")
       .then((response) => response.json())
-      .then((data) => (data));
+      .then((data) => {
+        return data
+      });
   });
   
 

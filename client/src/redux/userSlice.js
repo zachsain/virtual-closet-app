@@ -4,7 +4,9 @@ export const fetchUser = createAsyncThunk("user/fetchUser", () => {
 
     return fetch("/me")
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        return data
+      });
   });
 
 // Reducers
@@ -36,7 +38,7 @@ const userSlice = createSlice({
         state.entities.pieces.splice(index, 1, action.payload); 
       },
       pieceAdded(state, action){
-        state.entities.pieces.push(action.payload)
+         state.entities.pieces.push(action.payload)
       },
       pieceDeleted(state, action){
         const index = state.entities.pieces.findIndex((p) => p.id === action.payload);

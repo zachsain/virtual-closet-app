@@ -42,18 +42,12 @@ function SignUpForm({setUser}){
             });
         }
 
-        // dispatch(userAdded(user))
-        // setUser(user)
-        // history.push('/instructions')
-
-    function onImageChange(e){
-      console.log(e.target.files[0])
-        setImage(e.target.files[0]);
-    }
+  
+    // function onImageChange(e){
+    //   console.log(e.target.files[0])
+    //     setImage(e.target.files[0]);
+    // }
     
-    // let errorMsg = errors.map((e) => {
-    //   return <DisplayErrors key={e[0]} error={e} />
-    // })
     
     return (
         <div>

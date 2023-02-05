@@ -3,6 +3,7 @@ import BrandForm from './BrandForm'
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBrands } from "../redux/brandsSlice";
 import DisplayBrands from './DisplayBrands'
+import { fetchUser } from "../redux/userSlice";
 import '../App.css'
 
 
@@ -21,6 +22,10 @@ function Brands({}) {
 
     const brands = useSelector((state) => state.brands.entities);
     const myBrands = useSelector((state) => state.user.entities)
+    
+    useEffect(() => {
+        dispatch(fetchUser());
+      }, [myBrandBtnClick]); 
     
     function handleMyBrandClick(){
         setShowPieces(false)

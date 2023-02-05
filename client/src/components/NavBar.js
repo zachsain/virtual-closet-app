@@ -4,7 +4,7 @@ import {BsFillHouseFill} from 'react-icons/bs'
 import '../App.css'
 import './NavBar.css'
 
-function NavBar ({user, setUser}) {
+function NavBar () {
  return (
     <div className="navbar-container">
       <div className='nav-btn'>
