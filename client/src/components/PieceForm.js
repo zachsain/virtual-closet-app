@@ -1,10 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
-// import { fetchBrands } from "../redux/brandsSlice";
-// import { fetchStyles } from "../redux/stylesSlice";
-// import {brandAdded} from "../redux/brandsSlice";
-// import BrandForm from './BrandForm';
-// import StyleForm from './StyleForm';
 import {pieceAdded} from "../redux/userSlice";
 import DisplayErrors from './DisplayErrors';
 import '../App.css'

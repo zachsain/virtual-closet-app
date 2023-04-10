@@ -19,7 +19,6 @@ function PieceEditForm({
             id, 
             styleId, 
             brandId,
-            userId,
             pieceName,
             pieceDescription,
             pieceImage,
@@ -53,8 +52,7 @@ function PieceEditForm({
                 'image_url' : imageUrl,
                 'notes' :  description,
                 'style_id' : styleId,
-                'brand_id' : brandId,
-                'user_id' : userId
+                'brand_id' : brandId
             }),
           }).then((r) => {
             if (r.ok) {

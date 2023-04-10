@@ -66,7 +66,7 @@ function App() {
     <NavBar user={user} setUser={setUser} />
      <Switch>
        <Route exact path="/logout">
-         <Logout  setUser={setUser} />
+         <Logout setUser={setUser} />
        </Route>
        <Route exact path="/styles">
          <Styles />

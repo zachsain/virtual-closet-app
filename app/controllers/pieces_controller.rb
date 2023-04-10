@@ -1,6 +1,5 @@
 class PiecesController < ApplicationController
     before_action :authorize
-    # only: [:show, :update, :create, :destroy, :index]
     rescue_from ActiveRecord::RecordInvalid, with: :handle_invalid_data
     rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
