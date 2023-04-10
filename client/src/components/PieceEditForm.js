@@ -97,7 +97,7 @@ function PieceEditForm({
             onChange={(e) => setImageUrl(e.target.value)}
           ></input>
           <br />
-          <label className="edit-form-label">Price</label>
+          <label className="edit-form-label">Price:</label>
           <input
             type='text'
             className="form-inputs"
