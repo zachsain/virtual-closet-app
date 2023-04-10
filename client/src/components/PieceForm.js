@@ -167,6 +167,7 @@ function PieceForm({addPieceBtnClick, setAddPieceBtnClick}) {
           </div>
 
         </form>
+        {/* test  */}
 
         {/* <input type="file" accept="image/*" multiple={false} onChange={onImageChange} /> */}
     </div>
